@@ -27,6 +27,40 @@ angular.module('bola', ['ionic'])
                 $scope.countries = data;
             });
 
+        var noInternet = function(){
+            $ionicLoading.hide();
+            $ionicPopup.alert({
+                title: 'No Internet',
+                template: '<div style="text-align:center">Sorry, try again later</div>'
+            });
+        };
+
+        $ionicLoading.show({
+            template: 'Checking User...'
+        });
+
+        $scope.checkVerification = function (uuid) {
+            $http.get($scope.serverUrl + 'users/is_verified?uuid=' + uuid).
+                success(function (data) {
+                    $ionicLoading.hide();
+                    if(data.verified) {
+                        $scope.userId = data.user_id;
+                        $scope.isLogin = true
+                    } else
+                    $scope.toVerify = true;
+                }).
+                error(function (data, status) {
+                    noInternet();
+                });
+        };
+
+        if (!window.cordova)
+            $scope.checkVerification('development');
+
+        document.addEventListener('deviceready', function () {
+            $scope.checkVerification(device.uuid);
+        }, false);
+
         $scope.getCode = function () {
             var confirmPopup = $ionicPopup.confirm({
                 title: 'Validate phone number',
@@ -44,7 +78,7 @@ angular.module('bola', ['ionic'])
                             $scope.userId = data.user_id;
                         }).
                         error(function (data, status) {
-                            alert('not good' + status);
+                            noInternet();
                         });
                 }
 
@@ -57,7 +91,7 @@ angular.module('bola', ['ionic'])
                     $scope.isLogin = true;
                 }).
                 error(function (data, status) {
-                    alert('not good' + status);
+                    noInternet();
                 });
         };
     });
