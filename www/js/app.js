@@ -27,7 +27,7 @@ angular.module('bola', ['ionic'])
                 $scope.countries = data;
             });
 
-        var noInternet = function(){
+        var noInternet = function () {
             $ionicLoading.hide();
             $ionicPopup.alert({
                 title: 'No Internet',
@@ -43,11 +43,11 @@ angular.module('bola', ['ionic'])
             $http.get($scope.serverUrl + 'users/is_verified?uuid=' + uuid).
                 success(function (data) {
                     $ionicLoading.hide();
-                    if(data.verified) {
+                    if (data.verified) {
                         $scope.userId = data.user_id;
                         $scope.isLogin = true
                     } else
-                    $scope.toVerify = true;
+                        $scope.toVerify = true;
                 }).
                 error(function (data, status) {
                     noInternet();
@@ -94,4 +94,8 @@ angular.module('bola', ['ionic'])
                     noInternet();
                 });
         };
+
+        $scope.openTab = function (tab) {
+            $scope.tab = tab;
+        }
     });

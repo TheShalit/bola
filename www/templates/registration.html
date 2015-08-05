@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="submit-button">
-            <button type="submit" class="button button-block button-assertive">
+            <button type="submit" ng-disabled="user.phone_number.length != 9 || !user.phone_prefix" class="button button-block button-assertive">
                 Send SMS
             </button>
         </div>
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="submit-button">
-            <button type="submit" class="button button-block button-assertive">
+            <button type="submit" ng-disabled="user.verify_code.length != 4" class="button button-block button-assertive">
                 Validate SMS
             </button>
         </div>
