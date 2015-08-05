@@ -16,4 +16,25 @@ angular.module('starter', ['ionic'])
                 StatusBar.styleDefault();
             }
         });
+    })
+
+    .controller('eventsCtrl', function ($scope, $http, $ionicSideMenuDelegate) {
+        $scope.tab = 'events';
+
+        $scope.login = function () {
+            $http.get('login-page').
+                success(function (data) {
+                    $scope.user = data.user;
+                }).
+                error(function (data, status) {
+                    //alert('note good' + status);
+                    // TODO remove after rails login
+                    $scope.user = {
+                        name: 'Shalev Shalit',
+                        img: 'https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/1467418_10202532683626497_1891945580_n.jpg?oh=311833ac06ec948e273cfcee3ed244fa&oe=563B1FA9&__gda__=1446779510_e21009ca79358fc3187c2324670b1410'
+                    };
+                });
+
+
+        }
     });
