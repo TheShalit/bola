@@ -1,23 +1,59 @@
-<div class="logo">
+<div class="reg-logo">
     <img src="img/b-icon.png"/>
 </div>
-<div class="description">
-    PLEASE INSERT PHONE NUMBER TO LOG IN
-</div>
-<div class="reg-form">
-    <div class="list">
-        <div class="item item-select">
-            <select>
-                <option>054</option>
-                <option selected>052</option>
-                <option>050</option>
-            </select>
+<div class="registration-content" ng-hide="userId">
+    <div class="card">
+        <div class="item item-text-wrap">
+            Please insert your phone number in order to log in
         </div>
     </div>
-    <input type="text" placeholder="Phone Number">
+    <form name="get_code" class="reg-form" ng-submit="getCode()">
 
-    <button ng-click="login()" class="button button-block bar-assertive">
-        Send SMS
-    </button>
+        <div class="item list-inset row">
+            <div class="col">
+                <label class="item-input item-select">
+                    <div class="input-label">
+                        Phone:
+                    </div>
+                    <select ng-model="user.phone_prefix">
+                        <option style="display:none" value=""></option>
+                        <option ng-repeat="(country, code) in countries" value="{{code}}">{{country}} {{code}}</option>
+                    </select>
+                </label>
+            </div>
+            <div class="col">
+                <div class="item-input-inset">
+                    <label>
+                        <input type="number" ng-model="user.phone_number" maxlength="9" placeholder="Phone Number">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="submit-button">
+            <button type="submit" class="button button-block button-assertive">
+                Send SMS
+            </button>
+        </div>
+    </form>
 </div>
+<div class="registration-content" ng-show="userId">
+    <div class="card">
+        <div class="item item-text-wrap">
+            Type the code that you've received
+        </div>
+    </div>
+    <form name="get_code" class="reg-form" ng-submit="verify()">
+        <div class="list list-inset code-field">
+            <div class="item">
+                <label>
+                    <input type="number" ng-model="user.verify_code" maxlength="4" placeholder="Code">
+                </label>
+            </div>
+        </div>
+        <div class="submit-button">
+            <button type="submit" class="button button-block button-assertive">
+                Validate SMS
+            </button>
+        </div>
+    </form>
 </div>

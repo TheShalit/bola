@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+angular.module('bola', ['ionic'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -18,23 +18,46 @@ angular.module('starter', ['ionic'])
         });
     })
 
-    .controller('eventsCtrl', function ($scope, $http, $ionicSideMenuDelegate) {
+    .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading) {
         $scope.tab = 'events';
+        $scope.serverUrl = 'http://bola-server.herokuapp.com/';
+        $scope.user = {};
+        $http.get('js/phone_prefix.json').
+            success(function (data) {
+                $scope.countries = data;
+            });
 
-        $scope.login = function () {
-            $http.get('login-page').
+        $scope.getCode = function () {
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'Validate phone number',
+                template: '<div style="text-align:center">Are you sure that<br><b>+' + $scope.user.phone_prefix + $scope.user.phone_number + '</b><br>is your number?</div>'
+            });
+            confirmPopup.then(function (res) {
+                $ionicLoading.show({
+                    template: 'Loading...'
+                });
+                if (res) {
+                    var uuid = window.cordova ? device.uuid : 'development';
+                    $http.get($scope.serverUrl + 'users/get_code?uuid=' + uuid + '&phone_number=' + $scope.user.phone_number + '&phone_prefix=' + $scope.user.phone_prefix).
+                        success(function (data) {
+                            $ionicLoading.hide();
+                            $scope.userId = data.user_id;
+                        }).
+                        error(function (data, status) {
+                            alert('not good' + status);
+                        });
+                }
+
+            });
+        };
+
+        $scope.verify = function () {
+            $http.get($scope.serverUrl + 'users/verify_code?user_id=' + $scope.userId + '&verify_code=' + $scope.user.verify_code).
                 success(function (data) {
-                    $scope.user = data.user;
+                    $scope.isLogin = true;
                 }).
                 error(function (data, status) {
-                    //alert('note good' + status);
-                    // TODO remove after rails login
-                    $scope.user = {
-                        name: 'Shalev Shalit',
-                        img: 'https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/1467418_10202532683626497_1891945580_n.jpg?oh=311833ac06ec948e273cfcee3ed244fa&oe=563B1FA9&__gda__=1446779510_e21009ca79358fc3187c2324670b1410'
-                    };
+                    alert('not good' + status);
                 });
-
-
-        }
+        };
     });

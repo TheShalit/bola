@@ -21,10 +21,10 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
 </head>
-<body ng-app="starter">
+<body ng-app="bola">
 <ion-pane ng-controller="eventsCtrl">
-    <div ng-hide="!user" ng-include="'templates/' + tab + '.html'"></div>
-    <div ng-hide="user" ng-include="'templates/registration.html'"></div>
+    <div ng-hide="!isLogin" ng-include="'templates/' + tab + '.html'"></div>
+    <div ng-hide="isLogin" ng-include="'templates/registration.html'"></div>
 </ion-pane>
 </body>
 </html>
