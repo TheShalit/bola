@@ -105,7 +105,6 @@ angular.module('bola', ['ionic'])
         $scope.getEvents = function () {
             $http.get($scope.serverUrl + 'events').
                 success(function (data) {
-                    console.log(data);
                     if (data.success) {
                         $scope.events = data.events;
                     }
