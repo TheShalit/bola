@@ -20,3 +20,28 @@ html, body {
 .code-field {
     margin: 0 100px
 }
+
+.date-time-tab{
+    font-size: small;
+    color: #6b8e23;
+}
+
+.button-footer {
+    position: absolute;
+    border-radius: 20px;
+    right: 10px;
+    bottom:10px;
+}
+
+.add-button{
+    height: 50px;
+    width: 50px;
+    min-height: 50px;
+    min-width: 50px;
+    border-radius: 50px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.item-thumbnail-left img{
+    border: none;
+}
