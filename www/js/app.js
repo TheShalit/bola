@@ -22,6 +22,7 @@ angular.module('bola', ['ionic'])
         $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
+        $http.defaults.withCredentials = true;
         $http.get('js/phone_prefix.json').
             success(function (data) {
                 $scope.countries = data;
@@ -45,7 +46,8 @@ angular.module('bola', ['ionic'])
                     $ionicLoading.hide();
                     if (data.verified) {
                         $scope.userId = data.user_id;
-                        $scope.isLogin = true
+                        $scope.isLogin = true;
+                        $scope.getEvents();
                     } else
                         $scope.toVerify = true;
                 }).
@@ -89,6 +91,7 @@ angular.module('bola', ['ionic'])
             $http.get($scope.serverUrl + 'users/verify_code?user_id=' + $scope.userId + '&verify_code=' + $scope.user.verify_code).
                 success(function (data) {
                     $scope.isLogin = true;
+                    $scope.getEvents();
                 }).
                 error(function (data, status) {
                     noInternet();
@@ -97,5 +100,18 @@ angular.module('bola', ['ionic'])
 
         $scope.openTab = function (tab) {
             $scope.tab = tab;
+        };
+
+        $scope.getEvents = function () {
+            $http.get($scope.serverUrl + 'events').
+                success(function (data) {
+                    console.log(data);
+                    if (data.success) {
+                        $scope.events = data.events;
+                    }
+                }).
+                error(function (data, status) {
+                    noInternet();
+                });
         }
     });
