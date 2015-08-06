@@ -17,7 +17,7 @@ angular.module('bola', ['ionic', 'firebase'])
     })
 
     .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading) {
-        $scope.tab = 'events';
+        $scope.tab = 'user_page';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
         $scope.newEvent = {imagesrc: 'img/placeholder.png'};

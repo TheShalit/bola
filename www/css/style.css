@@ -183,3 +183,151 @@ html, body {
     margin: auto;
     width: 100%;
 }
+
+.profile-image {
+    padding-left: 25%;
+    font-size: 200px;
+}
+
+.profile-name {
+    margin-top: 5%;
+}
+
+.help {
+    margin-top: 15%;
+}
+
+.help i {
+    font-size: 30px;
+}
+
+.help .contact-us {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -10px;
+}
+
+.help .bar-assertive {
+    width: 100%;
+    text-align: center;
+}
+
+.help .list {
+    margin-top: 25%;
+}
+
+.contact-form {
+    margin-top: 20%;
+}
+
+.contact-form .send-button {
+    left: 42.5%;
+    margin-top: 10%
+}
+
+.contact-form p {
+    text-align: center;
+    margin-left: 30%;
+    height: 60px;
+    width: 150px;
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: bolder;
+}
+.pages-menu, .events-sorting {
+    top: 44px;
+    position: absolute;
+    color: #535353;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.pages-menu {
+    width: 175px;
+    left: 0;
+}
+
+.events-sorting {
+    width: 170px;
+    right: 0;
+}
+
+.messages-content {
+    top: 64px;
+}
+
+.messages {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+    width: 100%;
+}
+
+.messages li {
+    display: block;
+    clear: both;
+    min-width: 50%;
+    margin: 0 0 1rem 0;
+    padding: 0;
+}
+
+.messages .message-bullet {
+    border-radius: .75rem;
+    background: #e6e5eb;
+    color: #383641;
+    padding: 4px 8px;
+    margin: 0;
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+    box-shadow: -1px 0px 2px rgba(0, 255, 0, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2);
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+
+.messages li.self {
+    float: right;
+    text-align: right;
+    margin-right: 5px;
+    -webkit-animation: bounceInRight 0.4s ease-out;
+}
+
+.messages li.self .message-bullet {
+    background-color: lightgreen;
+}
+
+.messages li.other {
+    float: left;
+    text-align: left;
+    margin-left: 10px;
+    -webkit-animation: bounceInLeft 0.4s ease-out;
+}
+
+.messages .message-bullet .p {
+    font-size: .875rem;
+}
+
+.messages .message-bullet .writer {
+    font-size: .500rem;
+
+}
+
+.messages .message-bullet img {
+    display: block;
+    min-width: 65%;
+    border-radius: .75rem;
+}
+
+.new-event-form {
+    -webkit-animation: zoomIn 0.2s ease-out;
+}
+
+.new-event-form img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
