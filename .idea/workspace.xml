@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38b2bea9-1c7a-4fb1-baf6-c8af218b3467" name="Default" comment="fix show events">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+    <list default="true" id="38b2bea9-1c7a-4fb1-baf6-c8af218b3467" name="Default" comment="Merge branch 'registration' of https://github.com/TheShalit/bola into registration&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bola.iws" />
@@ -28,21 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registration.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="registration.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/templates/registration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.37783375">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#option#0;n#select#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -54,18 +44,10 @@
         <entry file="file://$PROJECT_DIR$/www/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="events.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/events.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.625">
-              <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-              <folding />
+              <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+              <folding>
+                <marker date="1438824899000" expanded="true" signature="1263:1266" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,8 +55,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.5833334">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -85,20 +67,22 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-3.125">
               <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-              <folding />
+              <folding>
+                <marker date="1438824887000" expanded="true" signature="219:226" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21377672">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="122" column="7" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
               <folding>
-                <marker date="1438817119000" expanded="true" signature="1617:1634" placeholder="..." />
-                <marker date="1438817119000" expanded="true" signature="2027:2044" placeholder="..." />
-                <marker date="1438817119000" expanded="true" signature="3078:3095" placeholder="..." />
+                <marker date="1438824887000" expanded="true" signature="1617:1634" placeholder="..." />
+                <marker date="1438824887000" expanded="true" signature="2027:2044" placeholder="..." />
+                <marker date="1438824887000" expanded="true" signature="3078:3095" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -142,10 +126,10 @@
         <option value="$PROJECT_DIR$/www/css/chat.css" />
         <option value="$PROJECT_DIR$/www/templates/event.html" />
         <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/www/templates/registration.html" />
         <option value="$PROJECT_DIR$/www/templates/events.html" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -185,7 +169,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -268,6 +251,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -288,6 +289,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -299,6 +301,11 @@
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="recentsLimit" value="5" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/www/css" />
+    </key>
   </component>
   <component name="RunManager" selected="IRB console.IRB console: bola">
     <configuration default="false" name="IRB console: bola" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
@@ -500,7 +507,13 @@
       <option name="project" value="LOCAL" />
       <updated>1438816180786</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge branch 'registration' of https://github.com/TheShalit/bola into registration&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
+      <created>1438824936115</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1438824936115</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -545,7 +558,8 @@
     <MESSAGE value="pull" />
     <MESSAGE value="show events from server" />
     <MESSAGE value="fix show events" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix show events" />
+    <MESSAGE value="Merge branch 'registration' of https://github.com/TheShalit/bola into registration&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'registration' of https://github.com/TheShalit/bola into registration&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -574,7 +588,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1438824899000" expanded="true" signature="1263:1266" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -606,7 +622,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding />
+          <folding>
+            <marker date="1438824887000" expanded="true" signature="219:226" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -615,9 +633,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="15" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
           <folding>
-            <marker date="1438817119000" expanded="true" signature="1617:1634" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="2027:2044" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="3078:3095" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="1617:1634" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="2027:2044" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="3078:3095" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -644,7 +662,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding />
+          <folding>
+            <marker date="1438824899000" expanded="true" signature="1263:1266" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -669,9 +689,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
           <folding>
-            <marker date="1438817119000" expanded="true" signature="1617:1634" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="2027:2044" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="3078:3095" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="1617:1634" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="2027:2044" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="3078:3095" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -698,7 +718,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1438824899000" expanded="true" signature="1263:1266" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -707,9 +729,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
-            <marker date="1438817119000" expanded="true" signature="1617:1634" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="2027:2044" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="3078:3095" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="1617:1634" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="2027:2044" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="3078:3095" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -744,7 +766,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1438824899000" expanded="true" signature="1263:1266" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -753,9 +777,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
-            <marker date="1438817119000" expanded="true" signature="1617:1634" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="2027:2044" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="3078:3095" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="1617:1634" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="2027:2044" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="3078:3095" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -791,9 +815,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1438817119000" expanded="true" signature="1617:1634" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="2027:2044" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="3078:3095" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="1617:1634" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="2027:2044" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="3078:3095" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -811,30 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/event.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.125">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -843,40 +843,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/events.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625">
-          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/registration.html">
+    <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state vertical-scroll-proportion="1.5833334">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
           <folding>
-            <element signature="n#style#0;n#option#0;n#select#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <marker date="1438824899000" expanded="true" signature="1263:1266" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.125">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding>
+            <marker date="1438824887000" expanded="true" signature="219:226" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21377672">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="122" column="7" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
           <folding>
-            <marker date="1438817119000" expanded="true" signature="1617:1634" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="2027:2044" placeholder="..." />
-            <marker date="1438817119000" expanded="true" signature="3078:3095" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="1617:1634" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="2027:2044" placeholder="..." />
+            <marker date="1438824887000" expanded="true" signature="3078:3095" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24940617">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37783375">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#option#0;n#select#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
