@@ -2,8 +2,16 @@ html, body {
     height: 100%;
 }
 
-.submit-button {
-    padding: 5px 20px;
+.clear {
+    clear: both !important;
+}
+
+.send-button {
+left: 20%
+}
+
+.send-button{
+    margin: 25%;
 }
 
 .reg-logo {
@@ -21,7 +29,11 @@ html, body {
     margin: 0 100px
 }
 
-.date-time-tab {
+.chat-bar {
+    height: 55px;
+}
+
+.date-time-tab{
     font-size: small;
     color: #6b8e23;
 }
@@ -44,6 +56,32 @@ html, body {
 
 .item-thumbnail-left img {
     border: none;
+}
+
+.new-event a {
+    color: #007aff;
+}
+
+.new-event button {
+    margin-top: 20%;
+    margin-left: 20%;
+}
+
+.new-event .row {
+    margin-left: -3%;
+}
+
+.new-event {
+    padding-top: 7.5%;
+}
+
+.new-event .item {
+    top: 2px;
+}
+
+.ion-image {
+    padding-left: 13%;
+    font-size: 50px;
 }
 
 .pages-menu, .events-sorting {

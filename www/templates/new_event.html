@@ -1,0 +1,46 @@
+<form class="new-event-form">
+
+    <div class="bar bar-header bar-assertive">
+        <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
+        <h1 class="title">Bola</h1>
+    </div>
+    <div class="list new-event list-inset">
+        <div class="row">
+            <div class="col col-67">
+                <label class="item item-input">
+                    <input type="text" placeholder="Enter Title">
+                </label>
+            </div>
+            <div class="col col-33 ion-image"></div>
+        </div>
+        <label class="item item-input">
+            <div class="input-label">Choose Event Date</div>
+            <input type="date">
+        </label>
+        <label class="item item-input">
+            <div class="input-label">Choose Event Time</div>
+            <input type="time">
+        </label>
+        <a ng-show="!addEndDate" ng-click="addEndDate=!addEndDate">Toggle End Date</a>
+        <label ng-show="addEndDate" ng-click="addEndDate=!addEndDate"
+               class="item item-input item-stacked-label ion-close-circled">
+        </label>
+        <label ng-show="addEndDate" class="item item-input ">
+            <div class="input-label">Choose Event Date</div>
+            <input type="date">
+        </label>
+        <label ng-show="addEndDate" class="item item-input ">
+            <div class="input-label">Choose Event Time</div>
+            <input type="time">
+        </label>
+        <label class="item item-input">
+            <input type="text" placeholder="Enter Location">
+        </label>
+        <label class="item item-input">
+            <textarea placeholder="Enter Description" rows="6" cols="6"></textarea>
+        </label>
+        <button class="button button-assertive send-button">
+            Send
+        </button>
+    </div>
+</form>
