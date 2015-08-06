@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('bola', ['ionic'])
+angular.module('bola', ['ionic', 'firebase'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -177,35 +177,28 @@ angular.module('bola', ['ionic'])
         }
     })
 
-    .controller('eventCtrl', function ($scope, $http, $ionicScrollDelegate) {
+    .controller('eventCtrl', function ($scope, $http, $ionicScrollDelegate, $firebaseArray, $ionicPopup) {
         $scope.userId = $scope.$parent.$parent.userId;
-        console.log($scope.$parent.$parent.userId);
-        //window.localStorage[$scope.event.id] ||
-        $scope.messages = [
-            {
-                id: 1234,
-                writer: 'Shalev Shalit',
-                writerId: 1,
-                content: 'asdf'
-            },
-            {
-                id: 1235,
-                writer: 'Shalev Shalit',
-                writerId: 2,
-                content: 'asdf'
-            },
-            {
-                id: 5543,
-                writer: 'Shalev Shalit',
-                writerId: 3,
-                content: 'asdf'
-            }
-        ];
+        $scope.event = $scope.$parent.$parent.event;
+        $scope.message = {};
+        var itemsRef = new Firebase("https://boiling-torch-2188.firebaseio.com/events/" + $scope.event.id + '/');
+        $scope.messages = $firebaseArray(itemsRef);
 
         $scope.send = function () {
-            var message = angular.copy($scope.messages[Math.floor(Math.random() * 3)]);
-            message['id'] = Math.floor(Math.random() * 999999);
-            $scope.messages.push(message);
-            $ionicScrollDelegate.scrollBottom();
+            $http({
+                url: $scope.serverUrl + 'messages/create',
+                method: "GET",
+                params: {event_id: $scope.event.id, content: $scope.message.content}
+            }).success(function (data) {
+                if (data.success) {
+                    $scope.message.content = '';
+                    $scope.$apply();
+                } else {
+                    $ionicPopup.alert({
+                        title: 'Error',
+                        template: '<div style="text-align:center">' + data.errs + '</div>'
+                    });
+                }
+            })
         }
     });

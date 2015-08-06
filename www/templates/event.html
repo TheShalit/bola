@@ -6,16 +6,25 @@
         </div>
     </div>
     <ion-content class="messages-content">
-            <ol class="messages">
-                <li ng-repeat="message in messages" ng-class="message.writerId == userId ? 'self' : 'other'">
-                    <div class="message-bullet">
-                        <div class="writer">{{message.writer}}</div>
-                        <div><p>{{message.content}}</p></div>
-                    </div>
-                </li>
-            </ol>
+        <ol class="messages">
+            <li ng-repeat="message in messages" ng-class="message.writer_id == userId ? 'self' : 'other'">
+                <div class="message-bullet">
+                    <div class="writer">{{message.writer_name}}</div>
+                    <div><p>{{message.content}}</p></div>
+                </div>
+            </li>
+        </ol>
     </ion-content>
-    <ion-footer-bar class="bar-frosted">
-        <button ng-click="send()" class="button button-clear button-positive">Add Message</button>
+    <ion-footer-bar>
+        <form ng-submit="send()">
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" ng-model="message.content" placeholder="write message">
+                </label>
+                <button type="submit" class="button button-small">
+                    Send
+                </button>
+            </div>
+        </form>
     </ion-footer-bar>
 </div>
