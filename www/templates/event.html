@@ -1,6 +1,21 @@
-<div class="bar bar-header bar-assertive chat-bar">
-    <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
-    <div class="h1 title">
-        <div>Event Name</div>
+<div ng-controller="eventCtrl">
+    <div class="bar bar-header bar-assertive chat-bar">
+        <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
+        <div class="h1 title">
+            <div>{{event.title}}</div>
+        </div>
     </div>
+    <ion-content class="messages-content">
+            <ol class="messages">
+                <li ng-repeat="message in messages" ng-class="message.writerId == userId ? 'self' : 'other'">
+                    <div class="message-bullet">
+                        <div class="writer">{{message.writer}}</div>
+                        <div><p>{{message.content}}</p></div>
+                    </div>
+                </li>
+            </ol>
+    </ion-content>
+    <ion-footer-bar class="bar-frosted">
+        <button ng-click="send()" class="button button-clear button-positive">Add Message</button>
+    </ion-footer-bar>
 </div>
