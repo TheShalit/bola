@@ -7,11 +7,7 @@ html, body {
 }
 
 .send-button {
-left: 20%
-}
-
-.send-button{
-    margin: 25%;
+    left: 20%
 }
 
 .reg-logo {
@@ -33,7 +29,7 @@ left: 20%
     height: 55px;
 }
 
-.date-time-tab{
+.date-time-tab {
     font-size: small;
     color: #6b8e23;
 }
@@ -42,10 +38,10 @@ left: 20%
     position: absolute;
     border-radius: 20px;
     right: 10px;
-    bottom:10px;
+    bottom: 10px;
 }
 
-.add-button{
+.add-button {
     height: 50px;
     width: 50px;
     min-height: 50px;
@@ -54,7 +50,7 @@ left: 20%
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
-.item-thumbnail-left img{
+.item-thumbnail-left img {
     border: none;
 }
 
@@ -82,4 +78,58 @@ left: 20%
 .ion-image {
     padding-left: 13%;
     font-size: 50px;
+}
+
+.profile-image {
+    padding-left: 25%;
+    font-size: 200px;
+}
+
+.profile-name {
+    margin-top: 5%;
+}
+
+.help {
+    margin-top: 15%;
+}
+
+.help i {
+    font-size: 30px;
+}
+
+.help .contact-us {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -10px;
+}
+
+.help .bar-assertive {
+    width: 100%;
+    text-align: center;
+}
+
+.help .list {
+    margin-top: 25%;
+}
+
+.contact-form {
+    margin-top: 20%;
+}
+
+.contact-form .send-button {
+    left: 42.5%;
+    margin-top: 10%
+}
+
+.contact-form p {
+    text-align: center;
+    margin-left: 30%;
+    height: 60px;
+    width: 150px;
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: bolder;
 }

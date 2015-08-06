@@ -19,7 +19,7 @@ angular.module('bola', ['ionic'])
     })
 
     .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading) {
-        $scope.tab = 'events';
+        $scope.tab = 'contact_us';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
         $http.defaults.withCredentials = true;
