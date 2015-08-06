@@ -1,5 +1,3 @@
-// Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -81,6 +79,13 @@ angular.module('bola', ['ionic', 'firebase'])
             $scope.checkVerification('development');
 
         document.addEventListener('deviceready', function () {
+            navigator.contacts.find(['displayName', 'phoneNumbers'],
+                function (contacts) {
+                    $scope.contacts = contacts;
+                },
+                function () {
+
+                });
             $scope.checkVerification(device.uuid);
         }, false);
 
@@ -126,6 +131,17 @@ angular.module('bola', ['ionic', 'firebase'])
             );
         };
 
+        var _contacts = '';
+        $scope.newEvent = {
+            contacts: function(newName) {
+                // Note that newName can be undefined for two reasons:
+                // 1. Because it is called as a getter and thus called with no arguments
+                // 2. Because the property should actually be set to undefined. This happens e.g. if the
+                //    input is invalid
+                return arguments.length ? (_contacts = contacts) : _contacts;
+            }
+        };
+
         $scope.chooseImage = function () {
             if (navigator.camera) {
                 var options = {
@@ -155,7 +171,7 @@ angular.module('bola', ['ionic', 'firebase'])
                 $scope.newEvent = {imagesrc: 'img/placeholder.png'};
                 $ionicPopup.confirm({
                     title: 'New Event',
-                    template: '<div style="text-align:center">' + $scope.newEvent['title'] + ' has been created!</div>'
+                    template: '<div style="text-align:center">' + newEvent['title'] + ' has been created!</div>'
                 });
             }, $scope.newEvent);
         };
@@ -192,13 +208,12 @@ angular.module('bola', ['ionic', 'firebase'])
             }).success(function (data) {
                 if (data.success) {
                     $scope.message.content = '';
-                    $scope.$apply();
                 } else {
                     $ionicPopup.alert({
                         title: 'Error',
                         template: '<div style="text-align:center">' + data.errs + '</div>'
                     });
                 }
-            })
-        }
+            });
+        };
     });

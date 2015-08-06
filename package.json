@@ -23,6 +23,10 @@
     {
       "locator": "https://github.com/apache/cordova-plugin-camera.git",
       "id": "cordova-plugin-camera"
+    },
+    {
+      "locator": "https://github.com/apache/cordova-plugin-contacts.git",
+      "id": "cordova-plugin-contacts"
     }
   ],
   "cordovaPlatforms": [

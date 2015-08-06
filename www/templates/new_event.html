@@ -1,50 +1,64 @@
 <form class="new-event-form" ng-submit="createEvent()">
-
     <div class="bar bar-header bar-assertive">
         <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
         <h1 class="title">Bola</h1>
     </div>
-    <div class="list new-event list-inset">
-        <div class="row">
-            <div class="col col-67">
-                <label class="item item-input">
-                    <input type="text" ng-model="newEvent.title" placeholder="Enter Title">
-                </label>
-            </div>
-            <input type="hidden" id="imagesrc" ng-model="newEvent.imagesrc"/>
+    <ion-content style="height:100%">
+        <div class="list new-event list-inset">
+            <div class="row">
+                <div class="col col-67">
+                    <label class="item item-input">
+                        <input type="text" ng-model="newEvent.title" placeholder="Enter Title">
+                    </label>
+                </div>
+                <input type="hidden" id="imagesrc" ng-model="newEvent.imagesrc"/>
 
-            <div class="col col-33">
-                <img ng-src="{{newEvent.imagesrc}}" ng-click="chooseImage()"/>
+                <div class="col col-33">
+                    <img ng-src="{{newEvent.imagesrc}}" ng-click="chooseImage()"/>
+                </div>
             </div>
+            <label class="item item-input">
+                <div class="input-label">Start Date</div>
+                <input type="date" ng-model="newEvent.start_date">
+            </label>
+            <label class="item item-input">
+                <div class="input-label">Start Time</div>
+                <input type="time" ng-model="newEvent.start_time">
+            </label>
+            <a ng-show="!addEndDate" ng-click="addEndDate=!addEndDate">Toggle End Date</a>
+            <label ng-show="addEndDate" ng-click="addEndDate=!addEndDate"
+                   class="item item-input item-stacked-label ion-close-circled">
+            </label>
+            <label ng-show="addEndDate" class="item item-input ">
+                <div class="input-label">End Date</div>
+                <input type="date" ng-model="newEvent.end_date">
+            </label>
+            <label ng-show="addEndDate" class="item item-input ">
+                <div class="input-label">End Time</div>
+                <input type="time" ng-model="newEvent.end_time">
+            </label>
+            <label class="item item-input">
+                <input type="text" ng-model="newEvent.location" placeholder="Enter Location">
+            </label>
+            <label class="item item-input">
+                <textarea placeholder="Enter Description" ng-model="newEvent.description" rows="6" cols="6"></textarea>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Participants
+                </div>
+                <select type="text" ng-model="newEvent.contacts" multiple>
+                    <option ng-repeat="contact in contacts" value="{{contact.phoneNumbers[0]['value']}}">
+                        {{contact.displayName}}
+                    </option>
+                </select>
+            </label>
         </div>
-        <label class="item item-input">
-            <div class="input-label">Choose Event Date</div>
-            <input type="date" ng-model="newEvent.start_date">
-        </label>
-        <label class="item item-input">
-            <div class="input-label">Choose Event Time</div>
-            <input type="time" ng-model="newEvent.start_time">
-        </label>
-        <a ng-show="!addEndDate" ng-click="addEndDate=!addEndDate">Toggle End Date</a>
-        <label ng-show="addEndDate" ng-click="addEndDate=!addEndDate"
-               class="item item-input item-stacked-label ion-close-circled">
-        </label>
-        <label ng-show="addEndDate" class="item item-input ">
-            <div class="input-label">Choose Event Date</div>
-            <input type="date" ng-model="newEvent.end_date">
-        </label>
-        <label ng-show="addEndDate" class="item item-input ">
-            <div class="input-label">Choose Event Time</div>
-            <input type="time" ng-model="newEvent.end_time">
-        </label>
-        <label class="item item-input">
-            <input type="text" ng-model="newEvent.location" placeholder="Enter Location">
-        </label>
-        <label class="item item-input">
-            <textarea placeholder="Enter Description" ng-model="newEvent.description" rows="6" cols="6"></textarea>
-        </label>
-        <button type="submit" class="button button-assertive send-button">
-            Send
-        </button>
-    </div>
+
+        <div class="submit-button">
+            <button type="submit" class="button button-block button-assertive">
+                Create Event
+            </button>
+        </div>
+    </ion-content>
 </form>

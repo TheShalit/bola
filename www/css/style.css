@@ -6,11 +6,15 @@ html, body {
     clear: both !important;
 }
 
+.submit-button {
+    bottom: 0;
+}
+
 .send-button {
     left: 20%
 }
 
-.send-button{
+.send-button {
     margin: 25%;
 }
 
@@ -33,7 +37,7 @@ html, body {
     height: 55px;
 }
 
-.date-time-tab{
+.date-time-tab {
     font-size: small;
     color: #6b8e23;
 }
