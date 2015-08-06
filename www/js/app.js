@@ -1,3 +1,6 @@
+console.error = function(err){
+    alert(err);
+};
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -17,7 +20,7 @@ angular.module('bola', ['ionic', 'firebase'])
     })
 
     .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading) {
-        $scope.tab = 'user_page';
+        $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
         $scope.newEvent = {imagesrc: 'img/placeholder.png'};
