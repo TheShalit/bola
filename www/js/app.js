@@ -22,11 +22,34 @@ angular.module('bola', ['ionic'])
         $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
+        $scope.newEvent = {imagesrc: 'img/placeholder.png'};
         $http.defaults.withCredentials = true;
         $http.get('js/phone_prefix.json').
             success(function (data) {
                 $scope.countries = data;
             });
+
+        var serverRequest = function (extraUrl, success, params) {
+            $http({
+                url: $scope.serverUrl + extraUrl,
+                method: "GET",
+                params: params || {}
+            }).
+                success(function (data) {
+                    $ionicLoading.hide();
+                    if (data.success)
+                        success(data);
+                    else {
+                        $ionicPopup.alert({
+                            title: 'Error',
+                            template: '<div style="text-align:center">' + data.errs + '</div>'
+                        });
+                    }
+                }).
+                error(function (data, status) {
+                    noInternet();
+                });
+        };
 
         var noInternet = function () {
             $ionicLoading.hide();
@@ -41,8 +64,8 @@ angular.module('bola', ['ionic'])
         });
 
         $scope.checkVerification = function (uuid) {
-            $http.get($scope.serverUrl + 'users/is_verified?uuid=' + uuid).
-                success(function (data) {
+            serverRequest('users/is_verified?uuid=' + uuid,
+                function (data) {
                     $ionicLoading.hide();
                     if (data.verified) {
                         $scope.userId = data.user_id;
@@ -50,10 +73,8 @@ angular.module('bola', ['ionic'])
                         $scope.getEvents();
                     } else
                         $scope.toVerify = true;
-                }).
-                error(function (data, status) {
-                    noInternet();
-                });
+                }
+            );
         };
 
         if (!window.cordova)
@@ -74,28 +95,23 @@ angular.module('bola', ['ionic'])
                 });
                 if (res) {
                     var uuid = window.cordova ? device.uuid : 'development';
-                    $http.get($scope.serverUrl + 'users/get_code?uuid=' + uuid + '&phone_number=' + $scope.user.phone_number + '&phone_prefix=' + $scope.user.phone_prefix).
-                        success(function (data) {
-                            $ionicLoading.hide();
+                    serverRequest('users/get_code?uuid=' + uuid + '&phone_number=' + $scope.user.phone_number + '&phone_prefix=' + $scope.user.phone_prefix,
+                        function (data) {
                             $scope.userId = data.user_id;
-                        }).
-                        error(function (data, status) {
-                            noInternet();
-                        });
+                        }
+                    );
                 }
 
             });
         };
 
         $scope.verify = function () {
-            $http.get($scope.serverUrl + 'users/verify_code?user_id=' + $scope.userId + '&verify_code=' + $scope.user.verify_code).
-                success(function (data) {
+            serverRequest('users/verify_code?user_id=' + $scope.userId + '&verify_code=' + $scope.user.verify_code,
+                function () {
                     $scope.isLogin = true;
                     $scope.getEvents();
-                }).
-                error(function (data, status) {
-                    noInternet();
-                });
+                }
+            );
         };
 
         $scope.openTab = function (tab) {
@@ -103,14 +119,93 @@ angular.module('bola', ['ionic'])
         };
 
         $scope.getEvents = function () {
-            $http.get($scope.serverUrl + 'events').
-                success(function (data) {
-                    if (data.success) {
-                        $scope.events = data.events;
-                    }
-                }).
-                error(function (data, status) {
-                    noInternet();
+            serverRequest('events',
+                function (data) {
+                    $scope.events = data.events;
+                }
+            );
+        };
+
+        $scope.chooseImage = function () {
+            if (navigator.camera) {
+                var options = {
+                    quality: 100,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    allowEdit: true,
+                    targetWidth: 300,
+                    targetHeight: 300
+                };
+                navigator.camera.getPicture(function (imageURI) {
+                    $scope.imagesrc = imageURI;
+                    $scope.$apply();
+                }, function (err) {
+                    alert(err);
+                }, options);
+            }
+        };
+
+        $scope.createEvent = function () {
+            serverRequest('events/create', function (data) {
+                var newEvent = angular.copy($scope.newEvent);
+                newEvent['id'] = data['event_id'];
+                $scope.events.push(newEvent);
+                $scope.$apply();
+                $scope.openTab('events');
+                $scope.newEvent = {imagesrc: 'img/placeholder.png'};
+                $ionicPopup.confirm({
+                    title: 'New Event',
+                    template: '<div style="text-align:center">' + $scope.newEvent['title'] + ' has been created!</div>'
                 });
+            }, $scope.newEvent);
+        };
+
+        $scope.closeNewEvent = function () {
+            $ionicPopup.confirm({
+                title: 'Are you sure?',
+                template: '<div style="text-align:center">Your new event will be removed</div>'
+            }).then(function (res) {
+                if (res)
+                    openTab('events');
+            })
+
+        };
+
+        $scope.openEvent = function (eventData) {
+            $scope.event = eventData;
+            $scope.openTab('event')
+        }
+    })
+
+    .controller('eventCtrl', function ($scope, $http, $ionicScrollDelegate) {
+        $scope.userId = $scope.$parent.$parent.userId;
+        console.log($scope.$parent.$parent.userId);
+        //window.localStorage[$scope.event.id] ||
+        $scope.messages = [
+            {
+                id: 1234,
+                writer: 'Shalev Shalit',
+                writerId: 1,
+                content: 'asdf'
+            },
+            {
+                id: 1235,
+                writer: 'Shalev Shalit',
+                writerId: 2,
+                content: 'asdf'
+            },
+            {
+                id: 5543,
+                writer: 'Shalev Shalit',
+                writerId: 3,
+                content: 'asdf'
+            }
+        ];
+
+        $scope.send = function () {
+            var message = angular.copy($scope.messages[Math.floor(Math.random() * 3)]);
+            message['id'] = Math.floor(Math.random() * 999999);
+            $scope.messages.push(message);
+            $ionicScrollDelegate.scrollBottom();
         }
     });
