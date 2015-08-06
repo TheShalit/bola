@@ -119,5 +119,43 @@ angular.module('bola', ['ionic'])
                     $scope.events = data.events;
                 }
             );
+        };
+
+        $scope.openEvent = function (eventData) {
+            $scope.event = eventData;
+            $scope.openTab('event')
+        }
+    })
+
+    .controller('eventCtrl', function ($scope, $http, $ionicScrollDelegate) {
+        $scope.userId = $scope.$parent.$parent.userId;
+        console.log($scope.$parent.$parent.userId);
+        //window.localStorage[$scope.event.id] ||
+        $scope.messages = [
+            {
+                id: 1234,
+                writer: 'Shalev Shalit',
+                writerId: 1,
+                content: 'asdf'
+            },
+            {
+                id: 1235,
+                writer: 'Shalev Shalit',
+                writerId: 2,
+                content: 'asdf'
+            },
+            {
+                id: 5543,
+                writer: 'Shalev Shalit',
+                writerId: 3,
+                content: 'asdf'
+            }
+        ];
+
+        $scope.send = function () {
+            var message = angular.copy($scope.messages[Math.floor(Math.random() * 3)]);
+            message['id'] = Math.floor(Math.random() * 999999);
+            $scope.messages.push(message);
+            $ionicScrollDelegate.scrollBottom();
         }
     });

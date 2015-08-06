@@ -7,15 +7,15 @@
 </div>
 <ion-content class="has-header">
     <div ng-repeat="event in events">
-            <a class="item item-thumbnail-left" href="#">
+        <a class="item item-thumbnail-left" href="#" ng-click="openEvent(event)">
             <img src="img/default-event.png">
 
             <h2>{{event.title}}</h2>
             <span class="date-time-tab"> {{event.start_date}} </span>
 
             <p><span>{{event.description}}</span></p>
-            </a>
-        </div>
+        </a>
+    </div>
     </div>
 </ion-content>
 <div class="button-footer">
