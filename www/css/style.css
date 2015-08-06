@@ -52,6 +52,7 @@ html, body {
     min-width: 50px;
     border-radius: 50px;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
 .item-thumbnail-left img {
@@ -167,4 +168,14 @@ html, body {
     display: block;
     min-width: 65%;
     border-radius: .75rem;
+}
+
+.new-event-form {
+    -webkit-animation: zoomIn 0.2s ease-out;
+}
+
+.new-event-form img {
+    display: block;
+    margin: auto;
+    width: 100%;
 }

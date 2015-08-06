@@ -22,14 +22,19 @@ angular.module('bola', ['ionic'])
         $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
+        $scope.newEvent = {imagesrc: 'img/placeholder.png'};
         $http.defaults.withCredentials = true;
         $http.get('js/phone_prefix.json').
             success(function (data) {
                 $scope.countries = data;
             });
 
-        var serverRequest = function (extraUrl, success) {
-            $http.get($scope.serverUrl + extraUrl).
+        var serverRequest = function (extraUrl, success, params) {
+            $http({
+                url: $scope.serverUrl + extraUrl,
+                method: "GET",
+                params: params || {}
+            }).
                 success(function (data) {
                     $ionicLoading.hide();
                     if (data.success)
@@ -119,6 +124,51 @@ angular.module('bola', ['ionic'])
                     $scope.events = data.events;
                 }
             );
+        };
+
+        $scope.chooseImage = function () {
+            if (navigator.camera) {
+                var options = {
+                    quality: 100,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    allowEdit: true,
+                    targetWidth: 300,
+                    targetHeight: 300
+                };
+                navigator.camera.getPicture(function (imageURI) {
+                    $scope.imagesrc = imageURI;
+                    $scope.$apply();
+                }, function (err) {
+                    alert(err);
+                }, options);
+            }
+        };
+
+        $scope.createEvent = function () {
+            serverRequest('events/create', function (data) {
+                var newEvent = angular.copy($scope.newEvent);
+                newEvent['id'] = data['event_id'];
+                $scope.events.push(newEvent);
+                $scope.$apply();
+                $scope.openTab('events');
+                $scope.newEvent = {imagesrc: 'img/placeholder.png'};
+                $ionicPopup.confirm({
+                    title: 'New Event',
+                    template: '<div style="text-align:center">' + $scope.newEvent['title'] + ' has been created!</div>'
+                });
+            }, $scope.newEvent);
+        };
+
+        $scope.closeNewEvent = function () {
+            $ionicPopup.confirm({
+                title: 'Are you sure?',
+                template: '<div style="text-align:center">Your new event will be removed</div>'
+            }).then(function (res) {
+                if (res)
+                    openTab('events');
+            })
+
         };
 
         $scope.openEvent = function (eventData) {
