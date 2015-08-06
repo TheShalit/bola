@@ -21,7 +21,7 @@ html, body {
     margin: 0 100px
 }
 
-.date-time-tab{
+.date-time-tab {
     font-size: small;
     color: #6b8e23;
 }
@@ -30,10 +30,10 @@ html, body {
     position: absolute;
     border-radius: 20px;
     right: 10px;
-    bottom:10px;
+    bottom: 10px;
 }
 
-.add-button{
+.add-button {
     height: 50px;
     width: 50px;
     min-height: 50px;
@@ -42,6 +42,24 @@ html, body {
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
-.item-thumbnail-left img{
+.item-thumbnail-left img {
     border: none;
+}
+
+.pages-menu, .events-sorting {
+    top: 44px;
+    position: absolute;
+    color: #535353;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.pages-menu {
+    width: 175px;
+    left: 0;
+}
+
+.events-sorting {
+    width: 170px;
+    right: 0;
 }
