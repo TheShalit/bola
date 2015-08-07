@@ -127,7 +127,12 @@ angular.module('bola', ['ionic', 'firebase'])
             $scope.tab = tab;
         };
 
-        $scope.openMenu = function(menu) {
+        document.addEventListener("menubutton", function () {
+            if ($scope.isLogin)
+                $scope.openMenu('pages');
+        }, false);
+
+        $scope.openMenu = function (menu) {
             $scope.settings.menuOpen = $scope.settings.menuOpen == menu ? '' : menu;
         };
 
