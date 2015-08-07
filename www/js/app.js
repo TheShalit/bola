@@ -24,7 +24,7 @@ angular.module('bola', ['ionic', 'firebase'])
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
         $scope.settings = {order: 'start_date', menuOpen: ''};
-        $scope.newEvent = {imagesrc: 'img/placeholder.png'};
+        $scope.newEvent = {imagesrc: 'img/default-event.png'};
         $http.defaults.withCredentials = true;
         $http.get('js/phone_prefix.json').
             success(function (data) {
@@ -174,7 +174,7 @@ angular.module('bola', ['ionic', 'firebase'])
                 $scope.events.push(newEvent);
                 $scope.$apply();
                 $scope.openTab('events');
-                $scope.newEvent = {imagesrc: 'img/placeholder.png'};
+                $scope.newEvent = {imagesrc: 'img/default-event.png'};
                 $ionicPopup.confirm({
                     title: 'New Event',
                     template: '<div style="text-align:center">' + newEvent['title'] + ' has been created!</div>'

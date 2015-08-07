@@ -1,43 +1,52 @@
 <form class="new-event-form" ng-submit="createEvent()">
     <div class="bar bar-header bar-assertive">
         <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
-        <h1 class="title">Bola</h1>
+        <h1 class="title">New Event</h1>
     </div>
-    <ion-content style="height:100%">
-        <div class="list new-event list-inset">
-            <div class="row">
-                <div class="col col-67">
-                    <label class="item item-input">
-                        <input type="text" ng-model="newEvent.title" placeholder="Enter Title">
-                    </label>
-                </div>
+    <ion-content class="has-header">
+        <div class="list new-event">
+            <div class="new-image">
                 <input type="hidden" id="imagesrc" ng-model="newEvent.imagesrc"/>
+                <img ng-src="{{newEvent.imagesrc}}" ng-click="chooseImage()"/>
+            </div>
 
-                <div class="col col-33">
-                    <img ng-src="{{newEvent.imagesrc}}" ng-click="chooseImage()"/>
+            <label class="item item-input">
+                <span class="input-label">What?</span>
+
+                <input type="text" ng-model="newEvent.title" placeholder="Enter Title">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">When?</span>
+
+                <div class="row">
+                    <div class="col">
+                        <input type="date" ng-model="newEvent.start_date">
+                    </div>
+                    <div class="col">
+                        <input type="time" ng-model="newEvent.start_time">
+                    </div>
+                </div>
+            </label>
+
+            <div class="item item-input" class="end-date-field">
+                <a ng-show="!addEndDate" ng-click="addEndDate=true" class="until">Until?</a>
+                <span class="input-label" ng-show="addEndDate">Until?</span>
+
+                <div class="row" ng-show="addEndDate">
+                    <div class="col">
+                        <input type="date" ng-model="newEvent.end_date">
+                    </div>
+                    <div class="col">
+                        <input type="time" ng-model="newEvent.end_time">
+                    </div>
+                </div>
+
+                <div class="cancel-env-date" ng-show="addEndDate" ng-click="addEndDate=false">
+                    <i class="icon ion-close-circled"></i>
                 </div>
             </div>
             <label class="item item-input">
-                <div class="input-label">Start Date</div>
-                <input type="date" ng-model="newEvent.start_date">
-            </label>
-            <label class="item item-input">
-                <div class="input-label">Start Time</div>
-                <input type="time" ng-model="newEvent.start_time">
-            </label>
-            <a ng-show="!addEndDate" ng-click="addEndDate=!addEndDate">Toggle End Date</a>
-            <label ng-show="addEndDate" ng-click="addEndDate=!addEndDate"
-                   class="item item-input item-stacked-label ion-close-circled">
-            </label>
-            <label ng-show="addEndDate" class="item item-input ">
-                <div class="input-label">End Date</div>
-                <input type="date" ng-model="newEvent.end_date">
-            </label>
-            <label ng-show="addEndDate" class="item item-input ">
-                <div class="input-label">End Time</div>
-                <input type="time" ng-model="newEvent.end_time">
-            </label>
-            <label class="item item-input">
+                <span class="input-label">Where?</span>
                 <input type="text" ng-model="newEvent.location" placeholder="Enter Location">
             </label>
             <label class="item item-input">
@@ -54,11 +63,11 @@
                 </select>
             </label>
         </div>
-
-        <div class="submit-button">
-            <button type="submit" class="button button-block button-assertive">
-                Create Event
-            </button>
-        </div>
     </ion-content>
+
+    <div class="bar bar-footer">
+        <button type="submit" class="button button-full button-assertive submit-event">
+            Create Event
+        </button>
+    </div>
 </form>

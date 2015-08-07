@@ -6,10 +6,6 @@ html, body {
     clear: both !important;
 }
 
-.submit-button {
-    bottom: 0;
-}
-
 .send-button {
     left: 20%
 }
@@ -80,12 +76,47 @@ html, body {
     margin-left: -3%;
 }
 
-.new-event {
-    padding-top: 7.5%;
-}
-
 .new-event .item {
     top: 2px;
+}
+
+.new-event .row, .new-event .col {
+    padding: 0;
+}
+
+.new-event .col input {
+    padding: 0;
+}
+
+.new-image {
+    height: 100px;
+    position: relative;
+}
+.new-image img {
+    position: absolute;
+    margin-top: -80px;
+    width: 100%;
+    top:0;
+}
+
+.new-event .end-date-field {
+    position: relative;
+}
+
+.new-event .end-date-field a {
+    width: 100%;
+    text-align: center;
+}
+
+.new-event .cancel-env-date {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -11px;
+}
+
+.submit-event {
+    margin: 0 !important;
 }
 
 .ion-image {
@@ -212,12 +243,6 @@ li.self .message-bullet:before {
 
 .new-event-form {
     -webkit-animation: zoomIn 0.2s ease-out;
-}
-
-.new-event-form img {
-    display: block;
-    margin: auto;
-    width: 100%;
 }
 
 .profile-image {
