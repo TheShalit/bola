@@ -23,6 +23,7 @@ angular.module('bola', ['ionic', 'firebase'])
         $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
+        $scope.settings = {order: 'start_date', menuOpen: ''};
         $scope.newEvent = {imagesrc: 'img/placeholder.png'};
         $http.defaults.withCredentials = true;
         $http.get('js/phone_prefix.json').
@@ -126,6 +127,10 @@ angular.module('bola', ['ionic', 'firebase'])
             $scope.tab = tab;
         };
 
+        $scope.openMenu = function(menu) {
+            $scope.settings.menuOpen = $scope.settings.menuOpen == menu ? '' : menu;
+        };
+
         $scope.getEvents = function () {
             serverRequest('events',
                 function (data) {
@@ -133,6 +138,10 @@ angular.module('bola', ['ionic', 'firebase'])
                 }
             );
         };
+
+        $scope.$watch('settings.order', function () {
+            $scope.settings.menuOpen = '';
+        });
 
         $scope.chooseImage = function () {
             if (navigator.camera) {

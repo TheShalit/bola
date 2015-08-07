@@ -1,12 +1,12 @@
 <div class="bar bar-header bar-assertive">
-    <button ng-click="pages_menu=!pages_menu" class="button button-icon ion-android-menu"></button>
+    <button ng-click="openMenu('pages')" class="button button-icon ion-android-menu"></button>
     <div class="h1 title">
         <div>Bola</div>
     </div>
-    <button ng-click="events_sorting=!events_sorting" class="button button-icon ion-android-funnel"></button>
+    <button ng-click="openMenu('order')" class="button button-icon ion-android-funnel"></button>
 </div>
 <ion-content class="has-header">
-    <div ng-repeat="event in events">
+    <div ng-repeat="event in events | orderBy: settings.order">
         <a class="item item-thumbnail-left" href="#" ng-click="openEvent(event)">
             <img src="img/default-event.png">
 
@@ -21,7 +21,7 @@
 <div class="button-footer">
     <button ng-click="openTab('new_event')" class="button button-assertive ion-plus add-button"></button>
 </div>
-<div ng-show="pages_menu" class="list events-menu pages-menu">
+<div ng-show="settings.menuOpen == 'pages'" class="list events-menu pages-menu">
     <a class="item item-icon-left" href="#">
         <span class="icon ion-android-person"></span>
         Profile
@@ -39,23 +39,23 @@
         Help
     </a>
 </div>
-<div ng-show="events_sorting" class="list events-menu events-sorting">
+<div ng-show="settings.menuOpen == 'order'" class="list events-menu events-sorting">
     <div class="item item-divider">
         Order by
     </div>
     <label class="item item-radio">
-        <input type="radio" name="order" id="activity" checked="checked">
+        <input type="radio" ng-model="settings.order" value="start_date">
 
         <div class="item-content">
-            Activity
+            Date & Time
         </div>
         <span class="radio-icon ion-checkmark"></span>
     </label>
     <label class="item item-radio">
-        <input type="radio" name="order" id="date_time">
+        <input type="radio" ng-model="settings.order" value="title">
 
         <div class="item-content">
-            Date & Time
+            Title
         </div>
         <span class="radio-icon ion-checkmark"></span>
     </label>
