@@ -1,4 +1,4 @@
-console.error = function(err){
+console.error = function (err) {
     alert(err);
 };
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -134,17 +134,6 @@ angular.module('bola', ['ionic', 'firebase'])
             );
         };
 
-        var _contacts = '';
-        $scope.newEvent = {
-            contacts: function(newName) {
-                // Note that newName can be undefined for two reasons:
-                // 1. Because it is called as a getter and thus called with no arguments
-                // 2. Because the property should actually be set to undefined. This happens e.g. if the
-                //    input is invalid
-                return arguments.length ? (_contacts = contacts) : _contacts;
-            }
-        };
-
         $scope.chooseImage = function () {
             if (navigator.camera) {
                 var options = {
@@ -196,12 +185,21 @@ angular.module('bola', ['ionic', 'firebase'])
         }
     })
 
-    .controller('eventCtrl', function ($scope, $http, $ionicScrollDelegate, $firebaseArray, $ionicPopup) {
-        $scope.userId = $scope.$parent.$parent.userId;
-        $scope.event = $scope.$parent.$parent.event;
+    .controller('eventCtrl', function ($scope, $http, $ionicScrollDelegate, $firebaseArray, $ionicPopup, $timeout) {
+        $scope.firstLoad = true;
+        $scope.messages = [];
+        $scope.userId = $scope.$parent.userId;
+        $scope.event = $scope.$parent.event;
         $scope.message = {};
+
+        $ionicScrollDelegate.scrollBottom();
+
         var itemsRef = new Firebase("https://boiling-torch-2188.firebaseio.com/events/" + $scope.event.id + '/');
         $scope.messages = $firebaseArray(itemsRef);
+
+        itemsRef.on('child_added', function () {
+            $ionicScrollDelegate.scrollBottom(true);
+        });
 
         $scope.send = function () {
             $http({
@@ -219,4 +217,12 @@ angular.module('bola', ['ionic', 'firebase'])
                 }
             });
         };
+
+        $scope.$watch('$viewContentLoaded', function () {
+            $ionicScrollDelegate.scrollBottom();
+
+            $timeout(function () {
+                $scope.firstLoad = false;
+            }, 3000);
+        });
     });

@@ -21,7 +21,7 @@
 <div class="button-footer">
     <button ng-click="openTab('new_event')" class="button button-assertive ion-plus add-button"></button>
 </div>
-<div ng-show="pages_menu" class="list pages-menu">
+<div ng-show="pages_menu" class="list events-menu pages-menu">
     <a class="item item-icon-left" href="#">
         <span class="icon ion-android-person"></span>
         Profile
@@ -39,46 +39,7 @@
         Help
     </a>
 </div>
-<div ng-show="events_sorting" class="list events-sorting">
-    <div class="item item-divider">
-        Order by
-    </div>
-    <label class="item item-radio">
-        <input type="radio" name="order" id="activity" checked="checked">
-
-        <div class="item-content">
-            Activity
-        </div>
-        <span class="radio-icon ion-checkmark"></span>
-    </label>
-    <label class="item item-radio">
-        <input type="radio" name="order" id="date_time">
-
-        <div class="item-content">
-            Date & Time
-        </div>
-        <span class="radio-icon ion-checkmark"></span>
-    </label>
-</div>
-<div ng-show="pages_menu" class="list pages-menu">
-    <a class="item item-icon-left" href="#">
-        <span class="icon ion-android-person"></span>
-        Profile
-    </a>
-    <a class="item item-icon-left" href="#">
-        <span class="icon ion-key"></span>
-        Account
-    </a>
-    <a class="item item-icon-left" href="#">
-        <span class="icon ion-gear-a"></span>
-        Settings
-    </a>
-    <a class="item item-icon-left" href="#">
-        <span class="icon ion-help-circled"></span>
-        Help
-    </a>
-</div>
-<div ng-show="events_sorting" class="list events-sorting">
+<div ng-show="events_sorting" class="list events-menu events-sorting">
     <div class="item item-divider">
         Order by
     </div>
