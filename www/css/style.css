@@ -113,11 +113,6 @@ html, body {
     margin: 0 !important;
 }
 
-.ion-image {
-    padding-left: 13%;
-    font-size: 50px;
-}
-
 .pages-menu, .events-sorting {
     top: 44px;
     position: absolute;
@@ -270,6 +265,11 @@ li.self .message-bullet:before {
 
 .contact-form {
     margin-top: 20%;
+}
+
+.button-icon {
+    vertical-align: middle;
+    pointer-events: none;
 }
 
 .contact-form .send-button {

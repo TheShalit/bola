@@ -149,23 +149,41 @@ angular.module('bola', ['ionic', 'firebase'])
             $scope.settings.menuOpen = '';
         });
 
+        var getImage = function (type) {
+            var options = {
+                quality: 100,
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType[type],
+                allowEdit: true
+            };
+            navigator.camera.getPicture(function (imageURI) {
+                $scope.newEvent.imagesrc = imageURI;
+                $scope.$apply();
+            }, function (err) {
+                alert(err);
+            }, options);
+        };
         $scope.chooseImage = function () {
             if (navigator.camera) {
-                var options = {
-                    quality: 100,
-                    destinationType: Camera.DestinationType.FILE_URI,
-                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                    allowEdit: true,
-                    targetWidth: 300,
-                    targetHeight: 300
-                };
-                navigator.camera.getPicture(function (imageURI) {
-                    $scope.imagesrc = imageURI;
-                    $scope.$apply();
-                }, function (err) {
-                    alert(err);
-                }, options);
-            }
+                $ionicPopup.show({
+                    title: 'Select Action',
+                    buttons: [
+                        {
+                            text: '<i class="button-icon ion-image"></i><span>Library</span>',
+                            onTap: function (e) {
+                                return 'PHOTOLIBRARY';
+                            }
+                        },
+                        {
+                            text: '<i class="button-icon ion-camera"></i><span>Camera</span>',
+                            onTap: function (e) {
+                                return 'CAMERA';
+                            }
+                        }
+                    ]
+                }).then(getImage);
+            } else
+                getImage('PHOTOLIBRARY');
         };
 
         $scope.createEvent = function () {
