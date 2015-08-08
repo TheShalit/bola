@@ -89,6 +89,7 @@ html, body {
 }
 
 .new-image {
+    overflow: hidden;
     height: 100px;
     position: relative;
 }
@@ -239,10 +240,6 @@ li.self .message-bullet:before {
     display: block;
     min-width: 65%;
     border-radius: .75rem;
-}
-
-.new-event-form {
-    -webkit-animation: zoomIn 0.2s ease-out;
 }
 
 .profile-image {

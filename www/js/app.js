@@ -19,12 +19,20 @@ angular.module('bola', ['ionic', 'firebase'])
         });
     })
 
-    .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading) {
+    .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading, $filter) {
         $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
         $scope.settings = {order: 'start_date', menuOpen: ''};
-        $scope.newEvent = {imagesrc: 'img/default-event.png'};
+        var time = new Date('2000-01-01T' + $filter('date')(new Date(), 'HH:mm').slice(0, 4) + '0');
+        var newEventProps = {
+            imagesrc: 'img/default-event.png',
+            start_date: new Date(),
+            start_time: time,
+            end_date: new Date(),
+            end_time: time
+        };
+        $scope.newEvent = angular.copy(newEventProps);
         $http.defaults.withCredentials = true;
         $http.get('js/phone_prefix.json').
             success(function (data) {
@@ -83,13 +91,6 @@ angular.module('bola', ['ionic', 'firebase'])
             $scope.checkVerification('development');
 
         document.addEventListener('deviceready', function () {
-            navigator.contacts.find(['displayName', 'phoneNumbers'],
-                function (contacts) {
-                    $scope.contacts = contacts;
-                },
-                function () {
-
-                });
             $scope.checkVerification(device.uuid);
         }, false);
 
@@ -174,7 +175,7 @@ angular.module('bola', ['ionic', 'firebase'])
                 $scope.events.push(newEvent);
                 $scope.$apply();
                 $scope.openTab('events');
-                $scope.newEvent = {imagesrc: 'img/default-event.png'};
+                $scope.newEvent = angular.copy(newEventProps);
                 $ionicPopup.confirm({
                     title: 'New Event',
                     template: '<div style="text-align:center">' + newEvent['title'] + ' has been created!</div>'

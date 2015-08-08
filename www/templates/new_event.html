@@ -23,7 +23,7 @@
                         <input type="date" ng-model="newEvent.start_date">
                     </div>
                     <div class="col">
-                        <input type="time" ng-model="newEvent.start_time">
+                        <input type="time" ng-model="newEvent.start_time" step="600">
                     </div>
                 </div>
             </label>
@@ -37,7 +37,7 @@
                         <input type="date" ng-model="newEvent.end_date">
                     </div>
                     <div class="col">
-                        <input type="time" ng-model="newEvent.end_time">
+                        <input type="time" ng-model="newEvent.end_time" step="600">
                     </div>
                 </div>
 
@@ -51,16 +51,6 @@
             </label>
             <label class="item item-input">
                 <textarea placeholder="Enter Description" ng-model="newEvent.description" rows="6" cols="6"></textarea>
-            </label>
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    Participants
-                </div>
-                <select type="text" ng-model="newEvent.contacts" multiple>
-                    <option ng-repeat="contact in contacts" value="{{contact.phoneNumbers[0]['value']}}">
-                        {{contact.displayName}}
-                    </option>
-                </select>
             </label>
         </div>
     </ion-content>
