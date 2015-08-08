@@ -169,14 +169,14 @@ angular.module('bola', ['ionic', 'firebase'])
                     title: 'Select Action',
                     buttons: [
                         {
-                            text: '<i class="button-icon ion-image"></i><span>Library</span>',
-                            onTap: function (e) {
+                            text: '<i class="popup-icon ion-image"></i><span>Library</span>',
+                            onTap: function () {
                                 return 'PHOTOLIBRARY';
                             }
                         },
                         {
-                            text: '<i class="button-icon ion-camera"></i><span>Camera</span>',
-                            onTap: function (e) {
+                            text: '<i class="popup-icon ion-camera"></i><span>Camera</span>',
+                            onTap: function () {
                                 return 'CAMERA';
                             }
                         }

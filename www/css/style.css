@@ -267,9 +267,8 @@ li.self .message-bullet:before {
     margin-top: 20%;
 }
 
-.button-icon {
+.popup-icon {
     vertical-align: middle;
-    pointer-events: none;
 }
 
 .contact-form .send-button {
