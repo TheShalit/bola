@@ -21,20 +21,20 @@
     <button ng-click="openTab('new_event')" class="button button-assertive ion-plus add-button"></button>
 </div>
 <div ng-show="settings.menuOpen == 'pages'" class="list events-menu pages-menu">
-    <a class="item item-icon-left" href="#">
-        <span class="icon ion-android-person"></span>
+    <a class="item item-icon-left" href="#" ng-click="openTab('profile')">
+        <i class="icon ion-android-person"></i>
         Profile
     </a>
     <a class="item item-icon-left" href="#">
-        <span class="icon ion-key"></span>
+        <i class="icon ion-key"></i>
         Account
     </a>
     <a class="item item-icon-left" href="#">
-        <span class="icon ion-gear-a"></span>
+        <i class="icon ion-gear-a"></i>
         Settings
     </a>
-    <a class="item item-icon-left" href="#">
-        <span class="icon ion-help-circled"></span>
+    <a class="item item-icon-left" href="#" ng-click="openTab('help')">
+        <i class="icon ion-help-circled"></i>
         Help
     </a>
 </div>
