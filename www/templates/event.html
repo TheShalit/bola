@@ -1,8 +1,9 @@
 <div ng-controller="eventCtrl">
     <div class="bar bar-header bar-assertive chat-bar">
         <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
-        <div class="h1 title">
+        <div class="h1 title doublerow">
             <div>{{event.title}}</div>
+            <div>{{event.start_date}} at {{event.location}}</div>
         </div>
     </div>
     <ion-content class="messages-content">
@@ -19,8 +20,10 @@
     <form ng-submit="sendMsg()" novalidate>
         <ion-footer-bar class="bar-stable item-input-inset message-footer">
             <label class="item-input-wrapper">
-                <input type="text" class="message-content" ng-model="message.content" placeholder="Send a message..."></input>
+                <input type="text" class="message-content" ng-model="message.content"
+                       placeholder="Send a message..."></input>
             </label>
+
             <div class="footer-btn-wrap">
                 <button class="button button-icon icon ion-android-send footer-btn" type="submit"
                         ng-disabled="!message.content || message.content === ''">

@@ -334,3 +334,22 @@ at the bottom as the textarea resizes */
     position: absolute !important;
     bottom: 0;
 }
+
+.title.doublerow {
+    height: 100%;
+}
+
+.title.doublerow div {
+    position: absolute;
+    width: 100%;
+}
+
+.title.doublerow div:first-child {
+    top: -3px;
+}
+
+.title.doublerow div:last-child {
+    top: 16px;
+    font-size: 12px;
+    color: #DCDCDC;
+}

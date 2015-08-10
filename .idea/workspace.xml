@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38b2bea9-1c7a-4fb1-baf6-c8af218b3467" name="Default" comment="show avatar">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+    <list default="true" id="38b2bea9-1c7a-4fb1-baf6-c8af218b3467" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/event.html" afterPath="$PROJECT_DIR$/www/templates/event.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/events.html" afterPath="$PROJECT_DIR$/www/templates/events.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/registration.html" afterPath="$PROJECT_DIR$/www/templates/registration.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bola.iws" />
@@ -35,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/www/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+              <caret line="343" column="16" selection-start-line="343" selection-start-column="16" selection-end-line="343" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -81,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58843535">
-              <caret line="224" column="45" selection-start-line="224" selection-start-column="45" selection-end-line="224" selection-end-column="45" />
+            <state vertical-scroll-proportion="-8.925926">
+              <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
               <folding>
                 <marker date="1439242270000" expanded="true" signature="2210:2227" placeholder="..." />
                 <marker date="1439242270000" expanded="true" signature="2986:3003" placeholder="..." />
@@ -99,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="event.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="event.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/templates/event.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.25">
-              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.55837566">
+              <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -170,13 +168,13 @@
         <option value="$PROJECT_DIR$/www/templates/help.html" />
         <option value="$PROJECT_DIR$/www/templates/contact_us.html" />
         <option value="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/templates/new_event.html" />
         <option value="$PROJECT_DIR$/www/templates/profile.html" />
         <option value="$PROJECT_DIR$/www/templates/registration.html" />
-        <option value="$PROJECT_DIR$/www/templates/event.html" />
         <option value="$PROJECT_DIR$/www/templates/events.html" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/www/css/style.css" />
+        <option value="$PROJECT_DIR$/www/templates/event.html" />
       </list>
     </option>
   </component>
@@ -742,7 +740,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439231405338</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="upload avatar and show on list">
+      <created>1439242290867</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1439242290867</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -820,7 +824,8 @@
     <MESSAGE value="menu options enable" />
     <MESSAGE value="fix button bug" />
     <MESSAGE value="avatar upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="avatar upload" />
+    <MESSAGE value="upload avatar and show on list" />
+    <option name="LAST_COMMIT_MESSAGE" value="upload avatar and show on list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1179,14 +1184,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.0">
@@ -1219,14 +1216,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/event.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.25">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/new_event.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -1243,10 +1232,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="343" column="16" selection-start-line="343" selection-start-column="16" selection-end-line="343" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58843535">
-          <caret line="224" column="45" selection-start-line="224" selection-start-column="45" selection-end-line="224" selection-end-column="45" />
+        <state vertical-scroll-proportion="-8.925926">
+          <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
           <folding>
             <marker date="1439242270000" expanded="true" signature="2210:2227" placeholder="..." />
             <marker date="1439242270000" expanded="true" signature="2986:3003" placeholder="..." />
@@ -1256,6 +1253,14 @@
             <marker date="1439242270000" expanded="true" signature="8990:9007" placeholder="..." />
             <marker date="1439242270000" expanded="true" signature="10461:10478" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55837566">
+          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
