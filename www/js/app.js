@@ -63,12 +63,13 @@ angular.module('bola', ['ionic', 'firebase'])
 
         var checkLogin = function (data) {
             $ionicLoading.hide();
+            $scope.loginChecked = true;
             $scope.user = angular.extend({avatar: 'img/default-event.png'}, data.user);
             if ($scope.user.verified && $scope.user.name) {
                 $scope.isLogin = true;
                 $scope.getEvents();
             }
-        }
+        };
 
         var noInternet = function () {
             $ionicLoading.hide();
@@ -120,6 +121,7 @@ angular.module('bola', ['ionic', 'firebase'])
         };
 
         $scope.openTab = function (tab) {
+            $scope.openMenu();
             $scope.tab = tab;
         };
 
@@ -129,7 +131,7 @@ angular.module('bola', ['ionic', 'firebase'])
         }, false);
 
         $scope.openMenu = function (menu) {
-            $scope.settings.menuOpen = $scope.settings.menuOpen == menu ? '' : menu;
+            $scope.settings.menuOpen = $scope.settings.menuOpen == menu ? '' : menu || '';
         };
 
         $scope.getEvents = function () {
@@ -184,7 +186,11 @@ angular.module('bola', ['ionic', 'firebase'])
                 getImage('PHOTOLIBRARY');
         };
 
-        $scope.updateUser = function () {
+        var updateWithAvatar = function (url, success, params) {
+            $ionicLoading.show({
+                template: 'Uploading...'
+            });
+
             var options = new FileUploadOptions();
             options.fileKey = "avatar";
             options.mimeType = "image/jpeg";
@@ -192,32 +198,44 @@ angular.module('bola', ['ionic', 'firebase'])
             options.headers = {
                 Connection: "close"
             };
-            options.params = $scope.user;
+            options.params = params;
 
             var ft = new FileTransfer();
-            ft.upload($scope.user.avatar,
-                encodeURI($scope.serverUrl + 'users/update'),
+            ft.upload(params.avatar,
+                encodeURI($scope.serverUrl + url),
                 function (data) {
-                    $scope.user = angular.extend({avatar: 'img/default-event.png'}, data.user);
-                    if ($scope.user.name) {
-                        $scope.isLogin = true;
-                        $scope.getEvents();
-                    }
+                    $ionicLoading.hide();
+                    success(data);
                 },
                 function () {
-
+                    alert('error');
                 }, options, true);
         };
 
+        $scope.updateUser = function () {
+            updateWithAvatar('users/update', function (data) {
+                $scope.user = angular.extend({avatar: 'img/default-event.png'}, data.user);
+                $ionicPopup.alert({
+                    title: 'User Saved',
+                    template: '<div style="text-align:center">Avatar and Name has been saved!</div>'
+                });
+                if ($scope.user.name) {
+                    $scope.isLogin = true;
+                    $scope.getEvents();
+                    $scope.openTab('events');
+                }
+            }, $scope.user)
+        };
+
         $scope.createEvent = function () {
-            serverRequest('events/create', function (data) {
+            updateWithAvatar('events/create', function (data) {
                 var newEvent = angular.copy($scope.newEvent);
                 newEvent['id'] = data['event_id'];
                 $scope.events.push(newEvent);
                 $scope.$apply();
                 $scope.openTab('events');
                 $scope.newEvent = angular.copy(newEventProps);
-                $ionicPopup.confirm({
+                $ionicPopup.alert({
                     title: 'New Event',
                     template: '<div style="text-align:center">' + newEvent['title'] + ' has been created!</div>'
                 });
@@ -257,7 +275,7 @@ angular.module('bola', ['ionic', 'firebase'])
             $ionicScrollDelegate.scrollBottom(true);
         });
 
-        $scope.send = function () {
+        $scope.sendMsg = function () {
             $http({
                 url: $scope.serverUrl + 'messages/create',
                 method: "GET",
