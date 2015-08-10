@@ -6,6 +6,21 @@
             <div>{{event.start_date}} at {{event.location}}</div>
         </div>
     </div>
+    <div class="button-attend">
+        <button ng-click="openMenu('attending')"
+                ng-class="getStatus()"
+                ng-class="{'opened-menu': settings.menuOpen == 'attending'}"
+                class="button add-button">
+        </button>
+        <div ng-show="settings.menuOpen == 'attending'" class="attend-menu">
+            <button ng-click="changeAttending('accept')" class="button ion-ios-checkmark add-button">
+            </button>
+            <button ng-click="changeAttending('maybe')" class="button ion-ios-help add-button">
+            </button>
+            <button ng-click="changeAttending('declined')" class="button ion-ios-close add-button">
+            </button>
+        </div>
+    </div>
     <ion-content class="messages-content">
         <ol class="messages" ng-class="{'first-load': firstLoad}">
             <li ng-repeat="message in messages" ng-class="message.writer_id == userId ? 'self' : 'other'">

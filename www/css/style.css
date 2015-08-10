@@ -143,11 +143,11 @@ html, body {
     right: 0;
 }
 
-.events-menu.ng-hide-add {
+.events-menu.ng-hide-add, .attend-menu.ng-hide-add {
     -webkit-animation: slideOutUp 0.4s ease-out;
 }
 
-.events-menu.ng-hide-remove {
+.events-menu.ng-hide-remove, .attend-menu.ng-hide-remove {
     -webkit-animation: slideInDown 0.4s ease-out;
 }
 
@@ -352,4 +352,46 @@ at the bottom as the textarea resizes */
     top: 16px;
     font-size: 12px;
     color: #DCDCDC;
+}
+
+.button-attend {
+    position: absolute;
+    border-radius: 20px;
+    right: 10px;
+    top: 30px;
+}
+
+.button-attend button {
+    font-size: 50px;
+    padding: 0;
+}
+
+.button-attend button.opened-menu, .button-attend button.ion-ios-circle-filled {
+    border-color: dimgray !important;
+    background-color: darkgray !important;
+}
+
+.attend-menu button {
+    display: block;
+    margin-top: 5px;
+}
+
+.button-attend button.ion-ios-checkmark {
+    border-color: darkgreen;
+    background-color: lawngreen;
+}
+
+.button-attend button.ion-ios-checkmark {
+    border-color: darkgreen;
+    background-color: lawngreen;
+}
+
+.button-attend button.ion-ios-help {
+    border-color: orangered;
+    background-color: darkorange;
+}
+
+.button-attend button.ion-ios-close {
+    border-color: darkred;
+    background-color: rgba(255, 0, 0, 0.59);
 }

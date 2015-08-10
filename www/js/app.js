@@ -256,6 +256,29 @@ angular.module('bola', ['ionic', 'firebase'])
         $scope.openEvent = function (eventData) {
             $scope.event = eventData;
             $scope.openTab('event')
+        };
+
+        var attendingTypes = {
+            'null': 'ion-ios-circle-filled',
+            accept: 'ion-ios-checkmark',
+            maybe: 'ion-ios-help',
+            declined: 'ion-ios-close'
+        };
+        $scope.getStatus = function () {
+            return attendingTypes[$scope.event.status];
+        };
+
+        $scope.changeAttending = function (type) {
+            $ionicLoading.show({
+                template: 'Updating...'
+            });
+            serverRequest('events/update_status',
+                function () {
+                    $scope.event.status = type;
+                    $scope.openMenu();
+                },
+                {id: $scope.event.id, status: type}
+            );
         }
     })
 
