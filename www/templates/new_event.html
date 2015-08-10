@@ -6,8 +6,8 @@
     <ion-content class="has-header">
         <div class="list new-event">
             <div class="new-image">
-                <input type="hidden" id="imagesrc" ng-model="newEvent.imagesrc"/>
-                <img ng-src="{{newEvent.imagesrc}}" ng-click="chooseImage()"/>
+                <input type="hidden" name="avatar" ng-model="newEvent.avatar"/>
+                <img ng-src="{{newEvent.avatar}}" ng-click="chooseImage('newEvent')"/>
             </div>
 
             <label class="item item-input">

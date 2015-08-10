@@ -1,16 +1,16 @@
-<form class="profile-form">
+<form class="profile-form" ng-submit="updateUser()">
     <div class="bar bar-header bar-assertive">
-        <button class="button button-icon ion-android-arrow-back" ng-hide="newUser" ng-click="openTab('events')"></button>
+        <button class="button button-icon ion-android-arrow-back" ng-show="isLogin" ng-click="openTab('events')"></button>
         <h1 class="title">Profile</h1>
     </div>
-    <div class="list new-event list-inset">
-        <div ng-click="addPhoto=!addPhoto" class="ion-image profile-image"></div>
-        <div ng-show="addPhoto" class="button-bar bar-assertive">
-            <a class="button">Gallery</a>
-            <a class="button">Camera</a>
+    <div class="list has-header">
+        <div class="new-image profile-image">
+            <input type="hidden" name="avatar" ng-model="user.avatar"/>
+            <img ng-src="{{user.avatar}}" ng-click="chooseImage('user')"/>
         </div>
-        <label class="item item-input profile-name">
-            <input type="text" placeholder="Enter Name">
+
+        <label class="item item-input">
+            <input type="text" ng-model="user.name" placeholder="Enter Name">
         </label>
     </div>
 

@@ -26,7 +26,7 @@ angular.module('bola', ['ionic', 'firebase'])
         $scope.settings = {order: 'start_date', menuOpen: ''};
         var time = new Date('2000-01-01T' + $filter('date')(new Date(), 'HH:mm').slice(0, 4) + '0');
         var newEventProps = {
-            imagesrc: 'img/default-event.png',
+            avatar: 'img/default-event.png',
             start_date: new Date(),
             start_time: time,
             end_date: new Date(),
@@ -61,6 +61,15 @@ angular.module('bola', ['ionic', 'firebase'])
                 });
         };
 
+        var checkLogin = function (data) {
+            $ionicLoading.hide();
+            $scope.user = angular.extend({avatar: 'img/default-event.png'}, data.user);
+            if ($scope.user.verified && $scope.user.name) {
+                $scope.isLogin = true;
+                $scope.getEvents();
+            }
+        }
+
         var noInternet = function () {
             $ionicLoading.hide();
             $ionicPopup.alert({
@@ -74,17 +83,7 @@ angular.module('bola', ['ionic', 'firebase'])
         });
 
         $scope.checkVerification = function (uuid) {
-            serverRequest('users/is_verified?uuid=' + uuid,
-                function (data) {
-                    $ionicLoading.hide();
-                    if (data.verified) {
-                        $scope.userId = data.user_id;
-                        $scope.isLogin = true;
-                        $scope.getEvents();
-                    } else
-                        $scope.toVerify = true;
-                }
-            );
+            serverRequest('users/is_verified?uuid=' + uuid, checkLogin);
         };
 
         if (!window.cordova)
@@ -105,10 +104,11 @@ angular.module('bola', ['ionic', 'firebase'])
                 });
                 if (res) {
                     var uuid = window.cordova ? device.uuid : 'development';
-                    serverRequest('users/get_code?uuid=' + uuid + '&phone_number=' + $scope.user.phone_number + '&phone_prefix=' + $scope.user.phone_prefix,
+                    serverRequest('users/get_code',
                         function (data) {
-                            $scope.userId = data.user_id;
-                        }
+                            $scope.user = data.user;
+                        },
+                        angular.extend($scope.user, {uuid: uuid})
                     );
                 }
 
@@ -116,12 +116,7 @@ angular.module('bola', ['ionic', 'firebase'])
         };
 
         $scope.verify = function () {
-            serverRequest('users/verify_code?user_id=' + $scope.userId + '&verify_code=' + $scope.user.verify_code,
-                function () {
-                    $scope.isLogin = true;
-                    $scope.getEvents();
-                }
-            );
+            serverRequest('users/verify_code', checkLogin, $scope.user);
         };
 
         $scope.openTab = function (tab) {
@@ -149,7 +144,7 @@ angular.module('bola', ['ionic', 'firebase'])
             $scope.settings.menuOpen = '';
         });
 
-        var getImage = function (type) {
+        var getImage = function (type, toScope) {
             var options = {
                 quality: 100,
                 destinationType: Camera.DestinationType.FILE_URI,
@@ -157,33 +152,61 @@ angular.module('bola', ['ionic', 'firebase'])
                 allowEdit: true
             };
             navigator.camera.getPicture(function (imageURI) {
-                $scope.newEvent.imagesrc = imageURI;
+                $scope[toScope].avatar = imageURI;
                 $scope.$apply();
             }, function (err) {
                 alert(err);
             }, options);
         };
-        $scope.chooseImage = function () {
+
+        $scope.chooseImage = function (toScope) {
             if (navigator.camera) {
                 $ionicPopup.show({
                     title: 'Select Action',
                     buttons: [
                         {
-                            text: '<i class="popup-icon ion-image"></i><span>Library</span>',
+                            text: '<i class="popup-icon ion-image"></i><span> Library</span>',
                             onTap: function () {
                                 return 'PHOTOLIBRARY';
                             }
                         },
                         {
-                            text: '<i class="popup-icon ion-camera"></i><span>Camera</span>',
+                            text: '<i class="popup-icon ion-camera"></i><span> Camera</span>',
                             onTap: function () {
                                 return 'CAMERA';
                             }
                         }
                     ]
-                }).then(getImage);
+                }).then(function (type) {
+                    getImage(type, toScope);
+                });
             } else
                 getImage('PHOTOLIBRARY');
+        };
+
+        $scope.updateUser = function () {
+            var options = new FileUploadOptions();
+            options.fileKey = "avatar";
+            options.mimeType = "image/jpeg";
+            options.chunkedMode = false;
+            options.headers = {
+                Connection: "close"
+            };
+            options.params = $scope.user;
+
+            var ft = new FileTransfer();
+            ft.upload($scope.user.avatar,
+                encodeURI($scope.serverUrl + 'users/update'),
+                function (data) {
+                    $scope.user = angular.extend({avatar: 'img/default-event.png'}, data.user);
+                    if ($scope.user.name) {
+                        $scope.isLogin = true;
+                        $scope.getEvents();
+                    }
+                },
+                function () {
+
+                }, options, true);
         };
 
         $scope.createEvent = function () {
@@ -221,7 +244,7 @@ angular.module('bola', ['ionic', 'firebase'])
     .controller('eventCtrl', function ($scope, $http, $ionicScrollDelegate, $firebaseArray, $ionicPopup, $timeout) {
         $scope.firstLoad = true;
         $scope.messages = [];
-        $scope.userId = $scope.$parent.userId;
+        $scope.userId = $scope.$parent.user.id;
         $scope.event = $scope.$parent.event;
         $scope.message = {};
 
