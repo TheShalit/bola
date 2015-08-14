@@ -19,6 +19,9 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <feature name="Contacts">
+    <param name="android-package" value="org.apache.cordova.ContactManager" />
+  </feature>
   <platform name="android">
 
       <icon src="www/res/icons/android/bola-icon.png" density="ldpi"/>

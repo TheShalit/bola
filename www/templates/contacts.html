@@ -1,0 +1,33 @@
+<form class="new-event-form" ng-submit="saveContacts()">
+    <div class="bar bar-header bar-assertive">
+        <h1 class="title">Select Contacts</h1>
+    </div>
+    <ion-content class="has-header">
+        <ul class="list">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Search" ng-model="searchContact">
+            </label>
+            <li ng-repeat="contact in contacts | orderBy: name.formatted | contactFilter: searchContact"
+                class="item item-checkbox item-contact">
+                <label class="checkbox checkbox-assertive">
+                    <input type="checkbox" ng-model="contact.selected">
+                </label>
+
+                <a class="item item-avatar" href="#">
+                    <img ng-src="{{contact.photos[0].value}}">
+
+                    <h2>{{contact.name.formatted}}</h2>
+
+                    <p>{{contact.phoneNumbers[0].value}}</p>
+                </a>
+            </li>
+        </ul>
+    </ion-content>
+
+    <div class="bar bar-footer">
+        <button type="submit" class="button button-full button-assertive submit-event">
+            Done
+        </button>
+    </div>
+</form>

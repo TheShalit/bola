@@ -1,10 +1,10 @@
 console.error = function (err) {
-    alert(err);
+    alert(JSON.stringify(err));
 };
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('bola', ['ionic', 'firebase'])
+angular.module('bola', ['ionic', 'firebase', 'contactFilter'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -23,6 +23,8 @@ angular.module('bola', ['ionic', 'firebase'])
         $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
+        $scope.contacts = [];
+        $scope.contactsLoaded = false;
         $scope.settings = {order: 'start_date', menuOpen: ''};
         var time = new Date('2000-01-01T' + $filter('date')(new Date(), 'HH:mm').slice(0, 4) + '0');
         var newEventProps = {
@@ -30,7 +32,8 @@ angular.module('bola', ['ionic', 'firebase'])
             start_date: new Date(),
             start_time: time,
             end_date: new Date(),
-            end_time: time
+            end_time: time,
+            invites: []
         };
         $scope.newEvent = angular.copy(newEventProps);
         $http.defaults.withCredentials = true;
@@ -42,23 +45,21 @@ angular.module('bola', ['ionic', 'firebase'])
         var serverRequest = function (extraUrl, success, params) {
             $http({
                 url: $scope.serverUrl + extraUrl,
-                method: "GET",
-                params: params || {}
-            }).
-                success(function (data) {
-                    $ionicLoading.hide();
-                    if (data.success)
-                        success(data);
-                    else {
-                        $ionicPopup.alert({
-                            title: 'Error',
-                            template: '<div style="text-align:center">' + data.errs + '</div>'
-                        });
-                    }
-                }).
-                error(function (data, status) {
-                    noInternet();
-                });
+                method: "POST",
+                data: params || {}
+            }).success(function (data) {
+                $ionicLoading.hide();
+                if (data.success)
+                    success(data);
+                else {
+                    $ionicPopup.alert({
+                        title: 'Error',
+                        template: '<div style="text-align:center">' + data.errs + '</div>'
+                    });
+                }
+            }).error(function (data, status) {
+                noInternet();
+            });
         };
 
         var checkLogin = function (data) {
@@ -84,7 +85,7 @@ angular.module('bola', ['ionic', 'firebase'])
         });
 
         $scope.checkVerification = function (uuid) {
-            serverRequest('users/is_verified?uuid=' + uuid, checkLogin);
+            serverRequest('users/is_verified', checkLogin, {uuid: uuid});
         };
 
         if (!window.cordova)
@@ -92,6 +93,26 @@ angular.module('bola', ['ionic', 'firebase'])
 
         document.addEventListener('deviceready', function () {
             $scope.checkVerification(device.uuid);
+            var options = new ContactFindOptions();
+            var fields = ["name", "phoneNumbers", "photos"];
+            options.multiple = true;
+            options.desiredFields = fields;
+            options.hasPhoneNumber = true;
+            navigator.contacts.find(fields, function (contacts) {
+                serverRequest('users/verified_phones', function (data) {
+                    $scope.contactsLoaded = true;
+                    $scope.phoneIds = data.contacts;
+                    $scope.contacts = $filter('filter')(contacts, function (contact) {
+                        return $scope.phoneIds[contact.phoneNumbers[0].value];
+                    });
+                }, {
+                    contacts: contacts.map(function (contact) {
+                        return contact.phoneNumbers[0].value;
+                    })
+                });
+            }, function () {
+                alert('error');
+            }, options);
         }, false);
 
         $scope.getCode = function () {
@@ -150,8 +171,7 @@ angular.module('bola', ['ionic', 'firebase'])
             var options = {
                 quality: 100,
                 destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType[type],
-                allowEdit: true
+                sourceType: Camera.PictureSourceType[type]
             };
             navigator.camera.getPicture(function (imageURI) {
                 $scope[toScope].avatar = imageURI;
@@ -203,9 +223,17 @@ angular.module('bola', ['ionic', 'firebase'])
             var ft = new FileTransfer();
             ft.upload(params.avatar,
                 encodeURI($scope.serverUrl + url),
-                function (data) {
+                function (requestData) {
+                    var response = JSON.parse(requestData.response);
                     $ionicLoading.hide();
-                    success(data);
+
+                    if (response.success)
+                        success(response);
+                    else
+                        $ionicPopup.alert({
+                            title: 'Error',
+                            template: '<div style="text-align:center">' + response.errs + '</div>'
+                        });
                 },
                 function () {
                     alert('error');
@@ -229,11 +257,8 @@ angular.module('bola', ['ionic', 'firebase'])
 
         $scope.createEvent = function () {
             updateWithAvatar('events/create', function (data) {
-                var newEvent = angular.copy($scope.newEvent);
-                newEvent['id'] = data['event_id'];
-                $scope.events.push(newEvent);
-                $scope.$apply();
-                $scope.openTab('events');
+                $scope.events.push(data.event);
+                openEvent(data.event);
                 $scope.newEvent = angular.copy(newEventProps);
                 $ionicPopup.alert({
                     title: 'New Event',
@@ -250,7 +275,29 @@ angular.module('bola', ['ionic', 'firebase'])
                 if (res)
                     openTab('events');
             })
+        };
 
+        $scope.openContacts = function () {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            if ($scope.contactsLoaded) {
+                $ionicLoading.hide();
+                $scope.openTab('contacts');
+            } else {
+                var unbind = $scope.$watch('contactsLoaded', function () {
+                    $scope.openTab('contacts');
+                    $ionicLoading.hide();
+                    unbind();
+                });
+            }
+        };
+
+        $scope.saveContacts = function () {
+            $scope.newEvent.invites = $filter('filter')($scope.contacts, {selected: true}).map(function (contact) {
+                return $scope.phoneIds[contact.phoneNumbers[0].value];
+            }).join();
+            $scope.openTab('new_event');
         };
 
         $scope.openEvent = function (eventData) {
@@ -301,8 +348,8 @@ angular.module('bola', ['ionic', 'firebase'])
         $scope.sendMsg = function () {
             $http({
                 url: $scope.serverUrl + 'messages/create',
-                method: "GET",
-                params: {event_id: $scope.event.id, content: $scope.message.content}
+                method: "POST",
+                data: {event_id: $scope.event.id, content: $scope.message.content}
             }).success(function (data) {
                 if (data.success) {
                     $scope.message.content = '';

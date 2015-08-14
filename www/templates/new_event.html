@@ -50,6 +50,10 @@
                 <input type="text" ng-model="newEvent.location" placeholder="Enter Location">
             </label>
             <label class="item item-input">
+                <span class="input-label">Who?</span>
+                <button type="button" class="button button-assertive contacts-button" ng-click="openContacts()">Select Contacts ({{newEvent.invites.length}})</button>
+            </label>
+            <label class="item item-input">
                 <textarea placeholder="Enter Description" ng-model="newEvent.description" rows="6" cols="6"></textarea>
             </label>
         </div>
