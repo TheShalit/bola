@@ -1,13 +1,15 @@
 <div ng-controller="eventCtrl">
-    <div class="bar bar-header bar-assertive chat-bar">
+    <div ng-show="eventPop" class="event-details"
+         ng-include="'templates/' + (eventPop || 'event_details') + '.html'"></div>
+    <div ng-click="openEventDetails()" class="bar bar-header bar-assertive chat-bar">
         <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
         <div class="h1 title doublerow">
             <div>{{event.title}}</div>
             <div>{{event.start_date}} at {{event.location}}</div>
         </div>
     </div>
-    <div class="button-attend">
-        <button ng-click="openMenu('attending')"
+    <div class="button-attend" ng-class="eventPop">
+        <button ng-click="!eventPop && openMenu('attending')"
                 ng-class="getStatus()"
                 ng-class="{'opened-menu': settings.menuOpen == 'attending'}"
                 class="button add-button">
@@ -25,7 +27,10 @@
         <ol class="messages" ng-class="{'first-load': firstLoad}">
             <li ng-repeat="message in messages" ng-class="message.writer_id == userId ? 'self' : 'other'">
                 <div class="message-bullet">
-                    <div class="writer">{{message.writer_name}}</div>
+                    <div class="writer">
+                        <span class="message-status icon" ng-class="getStatus('{{message.writer_status}}')"></span>
+                            {{message.writer_name}}
+                    </div>
                     <div><p>{{message.content}}</p></div>
                 </div>
             </li>

@@ -31,6 +31,7 @@ html, body {
 
 .chat-bar {
     height: 55px;
+    z-index: 9991;
 }
 
 .date-time-tab {
@@ -165,16 +166,81 @@ html, body {
 }
 
 .events-menu.ng-hide-add, .attend-menu.ng-hide-add {
+    animation: slideOutUp 0.4s ease-out;
     -webkit-animation: slideOutUp 0.4s ease-out;
 }
 
 .events-menu.ng-hide-remove, .attend-menu.ng-hide-remove {
+    animation: slideInDown 0.4s ease-out;
     -webkit-animation: slideInDown 0.4s ease-out;
 }
 
 .messages-content {
     top: 56px;
     bottom: 56px;
+}
+
+.event-details {
+    top: -100%;
+}
+
+.event-details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 9992;
+}
+
+.event-details .list {
+    height: 100%;
+    top: 0;
+    padding: 0;
+    background: white;
+    animation: slideInDown 0.4s ease-out;
+    -webkit-animation: slideInDown 0.4s ease-out;
+}
+
+@keyframes moveAttend {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    30% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 140px, 0);
+    }
+}
+
+.button-attend.event_details {
+    animation: moveAttend 0.4s ease-out;
+    -webkit-animation: moveAttend 0.4s ease-out;
+    transform: translate3d(0, 140px, 0);
+    z-index: 9994;
+}
+
+.button-attend.event_details .attend-menu {
+    animation: none !important;
+    -webkit-animation: none !important;
+    display: none;
+}
+
+.event-details .input-label {
+    font-weight: bold;
+}
+
+.details-image {
+    overflow: hidden;
+    height: 200px;
+    position: relative;
+}
+
+.details-image img {
+    position: absolute;
+    width: 100%;
+    top: 0;
 }
 
 .messages {
@@ -201,7 +267,8 @@ html, body {
     margin: 0;
     display: inline-block;
     position: relative;
-    max-width: 80%;
+    max-width: 100%;
+    min-width: 70%;
 }
 
 .messages li.self {
@@ -212,8 +279,8 @@ html, body {
 }
 
 .messages li.self .message-bullet {
-    background-color: lightgreen;
-    box-shadow: -1px 0px 2px rgba(0, 255, 0, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2);
+    background-color: #93c7ee;
+    box-shadow: -1px 0px 2px rgba(0, 0, 255, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2);
 }
 
 .messages li.other {
@@ -224,8 +291,8 @@ html, body {
 }
 
 .messages li.other .message-bullet {
-    background-color: #e6e5eb;
-    box-shadow: -1px 0px 2px rgba(150, 150, 150, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2);
+    background-color: #ebe4e1;
+    box-shadow: -1px 0px 2px rgba(200, 130, 130, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2);
 }
 
 .messages .message-bullet .p {
@@ -242,13 +309,13 @@ html, body {
 }
 
 li.other .message-bullet:before {
-    background-color: #e6e5eb;
+    background-color: #ebe4e1;
     left: 10px;
     -webkit-transform: rotate(80deg) skew(5deg);
 }
 
 li.self .message-bullet:before {
-    background-color: lightgreen;
+    background-color: #93c7ee;
     right: 10px;
     -webkit-transform: rotate(108deg) skew(-5deg);
 }
@@ -262,6 +329,32 @@ li.self .message-bullet:before {
     display: block;
     min-width: 65%;
     border-radius: .75rem;
+}
+
+.messages li.self .message-status {
+    float: left;
+    margin-right: 5px;
+}
+
+.messages li.other .message-status {
+    float: right;
+    margin-left: 5px;
+}
+
+ .message-status {
+    font-size: 16px;
+}
+
+.message-status.ion-ios-checkmark {
+    color: #71ff00;
+}
+
+.message-status.ion-ios-help {
+    color: #c97000;
+}
+
+.message-status.ion-ios-close {
+    color: #d33639;
 }
 
 .profile-name {
@@ -410,11 +503,20 @@ li.self .message-bullet:before {
 .button-attend button {
     font-size: 50px;
     padding: 0;
+    z-index: 9993;
 }
 
 .button-attend button.opened-menu, .button-attend button.ion-ios-circle-filled {
     border-color: dimgray !important;
     background-color: darkgray !important;
+}
+
+.attend-menu {
+    position: absolute;
+}
+
+.attend-menu.ng-animate {
+    z-index: 9000;
 }
 
 .attend-menu button {
@@ -439,5 +541,5 @@ li.self .message-bullet:before {
 
 .button-attend button.ion-ios-close {
     border-color: darkred;
-    background-color: rgba(255, 0, 0, 0.59);
+    background-color: rgb(255, 63, 65);
 }

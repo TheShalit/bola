@@ -1,0 +1,47 @@
+<div class="bar bar-header bar-clear">
+    <button class="button button-icon ion-android-arrow-back" ng-click="closePop()"></button>
+
+    <button class="button button-icon ion-edit" ng-click="editEvent()"></button>
+</div>
+<div class="list">
+    <div class="details-image">
+        <img ng-src="{{event.avatar}}"/>
+    </div>
+
+    <label class="item item-input">
+        <span class="input-label">What?</span>
+        <span>{{event.title}}</span>
+    </label>
+        <span class="item item-input">
+            <span class="input-label">When?</span>
+            <span>{{event.start_date}}</span>
+        </span>
+
+    <div class="item item-input" class="end-date-field" ng-show="event.end_date">
+        <span class="input-label">Until?</span>
+        <span>{{event.end_date}}</span>
+    </div>
+    <label class="item item-input item-button-right">
+        <span class="input-label">Where?</span>
+        <span>{{event.location}}</span>
+        <button class="button button-clear button-assertive" ng-click="openWaze('{{event.location}}')">
+            <i class="icon ion-navigate"></i>
+        </button>
+    </label>
+    <label class="item item-input item-button-right">
+        <span class="input-label">Who?</span>
+        <span>
+            <span ng-repeat="invite in event.invites">{{event.invite.name}}</span>
+        </span>
+        <button class="button button-clear button-assertive" ng-click="openContacts()">
+            <i class="icon ion-person-add"></i>
+        </button>
+
+    </label>
+
+    <div class="item item-body">
+        <p>
+            {{event.description}}
+        </p>
+    </div>
+</div>

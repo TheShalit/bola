@@ -311,8 +311,8 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter'])
             maybe: 'ion-ios-help',
             declined: 'ion-ios-close'
         };
-        $scope.getStatus = function () {
-            return attendingTypes[$scope.event.status];
+        $scope.getStatus = function (status) {
+            return attendingTypes[status || $scope.event.status];
         };
 
         $scope.changeAttending = function (type) {
@@ -326,11 +326,16 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter'])
                 },
                 {id: $scope.event.id, status: type}
             );
+        };
+
+        $scope.openWaze = function (location) {
+            window.open("waze://?q=" + location);
         }
     })
 
     .controller('eventCtrl', function ($scope, $element, $http, $ionicScrollDelegate, $firebaseArray, $ionicPopup, $timeout) {
         $scope.firstLoad = true;
+        $scope.eventPop = '';
         $scope.messages = [];
         $scope.userId = $scope.$parent.user.id;
         $scope.event = $scope.$parent.event;
@@ -368,6 +373,37 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter'])
                     });
                 }
             });
+        };
+
+        $scope.closePop = function () {
+            $scope.eventPop = '';
+        };
+
+        $scope.openEventDetails = function () {
+            $scope.openMenu();
+            $scope.eventPop = 'event_details';
+        };
+
+        $scope.editEvent = function () {
+            $scope.newEvent = $scope.event;
+            $scope.eventPop = 'new_event';
+        };
+
+        $scope.openContacts = function () {
+            var phones = $scope.event.invites.map(function (invite) {
+                return invite.phone_number;
+            });
+            $scope.contacts.forEach(function (contact) {
+                contact.selected = phones.indexOf($scope.phoneIds[contact.phoneNumbers[0].value]) > 0;
+            });
+            $scope.eventPop = 'contacts';
+        };
+
+        $scope.saveContacts = function () {
+            $scope.newEvent.invites = $filter('filter')($scope.contacts, {selected: true}).map(function (contact) {
+                return $scope.phoneIds[contact.phoneNumbers[0].value];
+            }).join();
+            $scope.openEventDetails();
         };
 
         $scope.$watch('$viewContentLoaded', function () {
