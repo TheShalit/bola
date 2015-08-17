@@ -312,6 +312,8 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter'])
             declined: 'ion-ios-close'
         };
         $scope.getStatus = function (status) {
+            if (status == '')
+                status = 'null';
             return attendingTypes[status || $scope.event.status];
         };
 
