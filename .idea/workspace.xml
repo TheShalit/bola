@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38b2bea9-1c7a-4fb1-baf6-c8af218b3467" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/ngautocomplete.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/new_event.html" afterPath="$PROJECT_DIR$/www/templates/new_event.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bola.iws" />
@@ -65,18 +68,28 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.666667">
-              <caret line="31" column="76" selection-start-line="30" selection-start-column="37" selection-end-line="31" selection-end-column="76" />
+            <state vertical-scroll-proportion="-11.875">
+              <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_event.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ngautocomplete.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/ngautocomplete.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="165" column="7" selection-start-line="165" selection-start-column="7" selection-end-line="165" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_event.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/templates/new_event.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0">
-              <caret line="53" column="85" selection-start-line="53" selection-start-column="85" selection-end-line="53" selection-end-column="111" />
+            <state vertical-scroll-proportion="0.59366757">
+              <caret line="49" column="108" selection-start-line="49" selection-start-column="108" selection-end-line="49" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -92,20 +105,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73138297">
-              <caret line="314" column="29" selection-start-line="314" selection-start-column="29" selection-end-line="314" selection-end-column="29" />
+            <state vertical-scroll-proportion="-3.3333333">
+              <caret line="6" column="78" selection-start-line="6" selection-start-column="78" selection-end-line="6" selection-end-column="78" />
               <folding>
-                <marker date="1439842170000" expanded="true" signature="2291:2308" placeholder="..." />
-                <marker date="1439842170000" expanded="true" signature="3030:3047" placeholder="..." />
-                <marker date="1439842170000" expanded="true" signature="4670:4687" placeholder="..." />
-                <marker date="1439842170000" expanded="true" signature="8668:8685" placeholder="..." />
-                <marker date="1439842170000" expanded="true" signature="9193:9210" placeholder="..." />
-                <marker date="1439842170000" expanded="true" signature="9874:9891" placeholder="..." />
-                <marker date="1439842170000" expanded="true" signature="10167:10184" placeholder="..." />
-                <marker date="1439842170000" expanded="true" signature="13647:13664" placeholder="..." />
+                <marker date="1439843439000" expanded="true" signature="2309:2326" placeholder="..." />
+                <marker date="1439843439000" expanded="true" signature="3048:3065" placeholder="..." />
+                <marker date="1439843439000" expanded="true" signature="4688:4705" placeholder="..." />
+                <marker date="1439843439000" expanded="true" signature="8686:8703" placeholder="..." />
+                <marker date="1439843439000" expanded="true" signature="9211:9228" placeholder="..." />
+                <marker date="1439843439000" expanded="true" signature="9892:9909" placeholder="..." />
+                <marker date="1439843439000" expanded="true" signature="10185:10202" placeholder="..." />
+                <marker date="1439843439000" expanded="true" signature="13665:13682" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -137,8 +150,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Html5" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -161,18 +174,19 @@
         <option value="$PROJECT_DIR$/www/templates/profile.html" />
         <option value="$PROJECT_DIR$/www/templates/registration.html" />
         <option value="$PROJECT_DIR$/www/templates/events.html" />
-        <option value="$PROJECT_DIR$/www/templates/new_event.html" />
         <option value="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/www/js/filters.js" />
         <option value="$PROJECT_DIR$/www/templates/contacts.html" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/js/asd.js" />
-        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/www/templates/event_details.html" />
         <option value="$PROJECT_DIR$/www/templates/event.html" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
+        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/www/js/ngautocomplete.js" />
+        <option value="$PROJECT_DIR$/www/templates/new_event.html" />
       </list>
     </option>
   </component>
@@ -241,24 +255,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bola" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bola" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -654,7 +650,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439842055116</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="fix unknown status">
+      <created>1439842249514</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1439842249515</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -739,30 +741,14 @@
     <MESSAGE value="keep keyboard up &#10;fix event input" />
     <MESSAGE value="remove plugins from gitignore" />
     <MESSAGE value="add events details&#10;show status near message" />
-    <option name="LAST_COMMIT_MESSAGE" value="add events details&#10;show status near message" />
+    <MESSAGE value="fix unknown status" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix unknown status" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <marker date="1439842170000" expanded="true" signature="2291:2308" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="3030:3047" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="4670:4687" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="8668:8685" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="9193:9210" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="9874:9891" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="10167:10184" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="13647:13664" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/registration.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -803,14 +789,14 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
-            <marker date="1439842170000" expanded="true" signature="2291:2308" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="3030:3047" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="4670:4687" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="8668:8685" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="9193:9210" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="9874:9891" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="10167:10184" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="13647:13664" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="2309:2326" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="3048:3065" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="4688:4705" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="8686:8703" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="9211:9228" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="9892:9909" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="10185:10202" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="13665:13682" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -843,14 +829,14 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1439842170000" expanded="true" signature="2291:2308" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="3030:3047" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="4670:4687" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="8668:8685" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="9193:9210" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="9874:9891" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="10167:10184" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="13647:13664" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="2309:2326" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="3048:3065" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="4688:4705" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="8686:8703" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="9211:9228" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="9892:9909" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="10185:10202" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="13665:13682" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1096,14 +1082,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.666667">
-          <caret line="31" column="76" selection-start-line="30" selection-start-column="37" selection-end-line="31" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/filters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1120,34 +1098,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/new_event.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="53" column="85" selection-start-line="53" selection-start-column="85" selection-end-line="53" selection-end-column="111" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/build/intermediates/assets/debug/www/css/animate.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3139" column="22" selection-start-line="3139" selection-start-column="11" selection-end-line="3139" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/event_details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/event.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.125">
-          <caret line="30" column="77" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="77" />
           <folding />
         </state>
       </provider>
@@ -1164,20 +1118,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.125">
+          <caret line="30" column="77" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/event_details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73138297">
-          <caret line="314" column="29" selection-start-line="314" selection-start-column="29" selection-end-line="314" selection-end-column="29" />
+        <state vertical-scroll-proportion="-3.3333333">
+          <caret line="6" column="78" selection-start-line="6" selection-start-column="78" selection-end-line="6" selection-end-column="78" />
           <folding>
-            <marker date="1439842170000" expanded="true" signature="2291:2308" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="3030:3047" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="4670:4687" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="8668:8685" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="9193:9210" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="9874:9891" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="10167:10184" placeholder="..." />
-            <marker date="1439842170000" expanded="true" signature="13647:13664" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="2309:2326" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="3048:3065" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="4688:4705" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="8686:8703" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="9211:9228" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="9892:9909" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="10185:10202" placeholder="..." />
+            <marker date="1439843439000" expanded="true" signature="13665:13682" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/ngautocomplete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="165" column="7" selection-start-line="165" selection-start-column="7" selection-end-line="165" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.875">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/new_event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59366757">
+          <caret line="49" column="108" selection-start-line="49" selection-start-column="108" selection-end-line="49" selection-end-column="108" />
+          <folding />
         </state>
       </provider>
     </entry>
