@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38b2bea9-1c7a-4fb1-baf6-c8af218b3467" name="Default" comment="keep k">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/event.html" afterPath="$PROJECT_DIR$/www/templates/event.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
+    <list default="true" id="38b2bea9-1c7a-4fb1-baf6-c8af218b3467" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bola.iws" />
@@ -91,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70719606">
-              <caret line="357" column="58" selection-start-line="357" selection-start-column="58" selection-end-line="357" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="100" column="12" selection-start-line="100" selection-start-column="12" selection-end-line="100" selection-end-column="12" />
               <folding>
                 <marker date="1439643651000" expanded="true" signature="2291:2308" placeholder="..." />
                 <marker date="1439643651000" expanded="true" signature="3030:3047" placeholder="..." />
@@ -106,6 +103,16 @@
                 <marker date="1439643651000" expanded="true" signature="10167:10184" placeholder="..." />
                 <marker date="1439643651000" expanded="true" signature="13428:13445" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.14888337">
+              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,7 +158,6 @@
         <option value="$PROJECT_DIR$/www/templates/registration.html" />
         <option value="$PROJECT_DIR$/www/templates/events.html" />
         <option value="$PROJECT_DIR$/www/templates/new_event.html" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/www/js/filters.js" />
         <option value="$PROJECT_DIR$/www/templates/contacts.html" />
@@ -161,6 +167,7 @@
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/templates/event.html" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -624,7 +631,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439591301931</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="keep keyboard up &#10;fix event input">
+      <created>1439802923769</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1439802923769</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -706,7 +719,8 @@
     <MESSAGE value="subtitle for chat" />
     <MESSAGE value="update attend" />
     <MESSAGE value="select contacts" />
-    <option name="LAST_COMMIT_MESSAGE" value="select contacts" />
+    <MESSAGE value="keep keyboard up &#10;fix event input" />
+    <option name="LAST_COMMIT_MESSAGE" value="keep keyboard up &#10;fix event input" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1035,14 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21377672">
-          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/build/intermediates/assets/debug/www/lib/ionic/js/angular/angular.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33248731">
@@ -1117,8 +1123,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70719606">
-          <caret line="357" column="58" selection-start-line="357" selection-start-column="58" selection-end-line="357" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="12" selection-start-line="100" selection-start-column="12" selection-end-line="100" selection-end-column="12" />
           <folding>
             <marker date="1439643651000" expanded="true" signature="2291:2308" placeholder="..." />
             <marker date="1439643651000" expanded="true" signature="3030:3047" placeholder="..." />
@@ -1129,6 +1135,14 @@
             <marker date="1439643651000" expanded="true" signature="10167:10184" placeholder="..." />
             <marker date="1439643651000" expanded="true" signature="13428:13445" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14888337">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
