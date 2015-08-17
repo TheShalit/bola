@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+.pane {
+    background: #fff9f6;
+}
+
 .clear {
     clear: both !important;
 }
@@ -170,6 +174,7 @@ html, body {
 
 .messages-content {
     top: 56px;
+    bottom: 56px;
 }
 
 .messages {
@@ -317,39 +322,63 @@ li.self .message-bullet:before {
     animation: none !important;
 }
 
-.bar-footer {
-    overflow: visible !important;
-    padding: 5px;
+.message-footer {
+    padding: 0;
+    background: none !important;
+    height: 53px !important;
 }
 
-.bar-footer .message-content {
+.message-footer div {
+    bottom: 5px;
+}
+
+.message-footer .message-input {
+    border-radius: 15px 0 0 15px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    border-color: #ddd;
+    background-color: white;
+    color: #444;
+    position: absolute;
+    right: 61px;
+    left: 10px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}
+
+.message-footer label {
+    padding: 16px;
+    width: 100%;
+    display: block;
+}
+
+.message-footer input {
     resize: none;
-    height: 25px;
+    background: transparent;
+    margin-top: -3px;
+    height: 100%;
     width: 100%;
 }
 
-.bar-footer .item-input-wrapper {
-    padding: 0;
-    background-color: white;
+.message-footer .submit-message {
+    height: 48px;
+    width: 50px;
+    z-index: 2;
+    position: absolute;
+    right: 10px;
 }
 
-/* fixes an ios bug bear */
-button.ion-android-send {
-    padding-top: 2px;
-}
-
-/* add this to keep your footer buttons down
-at the bottom as the textarea resizes */
-.footer-btn-wrap {
-    position: relative;
+.message-footer button {
     height: 100%;
-    width: 40px;
-    top: 2px;
-}
-
-.footer-btn {
-    position: absolute !important;
-    bottom: 0;
+    padding: 2px 6px !important;
+    border: #e42012 1px solid;
+    border-radius: 0 15px 15px 0;
+    -webkit-border-radius: 0 15px 15px 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    background: #ef473a;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
 }
 
 .title.doublerow {

@@ -329,7 +329,7 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter'])
         }
     })
 
-    .controller('eventCtrl', function ($scope, $http, $ionicScrollDelegate, $firebaseArray, $ionicPopup, $timeout) {
+    .controller('eventCtrl', function ($scope, $element, $http, $ionicScrollDelegate, $firebaseArray, $ionicPopup, $timeout) {
         $scope.firstLoad = true;
         $scope.messages = [];
         $scope.userId = $scope.$parent.user.id;
@@ -342,6 +342,14 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter'])
         $scope.messages = $firebaseArray(itemsRef);
 
         itemsRef.on('child_added', function () {
+            $ionicScrollDelegate.scrollBottom(true);
+        });
+
+        $element[0].querySelector('#msgInput').onblur = function () {
+            this.focus();
+        };
+
+        window.addEventListener('native.keyboardshow', function () {
             $ionicScrollDelegate.scrollBottom(true);
         });
 
