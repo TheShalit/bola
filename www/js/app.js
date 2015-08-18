@@ -98,21 +98,27 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
             options.multiple = true;
             options.desiredFields = fields;
             options.hasPhoneNumber = true;
-            navigator.contacts.find(fields, function (contacts) {
-                serverRequest('users/verified_phones', function (data) {
-                    $scope.contactsLoaded = true;
-                    $scope.phoneIds = data.contacts;
-                    $scope.contacts = $filter('filter')(contacts, function (contact) {
-                        return $scope.phoneIds[contact.phoneNumbers[0].value];
-                    });
-                }, {
-                    contacts: contacts.map(function (contact) {
-                        return contact.phoneNumbers[0].value;
-                    })
-                });
-            }, function () {
-                alert('error');
-            }, options);
+            var watchLogin = $scope.$watch('isLogin', function () {
+                if ($scope.isLogin) {
+                    if (false)
+                        navigator.contacts.find(fields, function (contacts) {
+                            serverRequest('users/verified_phones', function (data) {
+                                $scope.contactsLoaded = true;
+                                $scope.phoneIds = data.contacts;
+                                $scope.contacts = $filter('filter')(contacts, function (contact) {
+                                    return $scope.phoneIds[contact.phoneNumbers[0].value];
+                                });
+                            }, {
+                                contacts: contacts.map(function (contact) {
+                                    return contact.phoneNumbers[0].value;
+                                })
+                            });
+                        }, function () {
+                            alert('error');
+                        }, options);
+                    watchLogin();
+                }
+            });
         }, false);
 
         $scope.getCode = function () {
