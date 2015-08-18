@@ -16,19 +16,18 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
-  <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+  <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
   <feature name="Contacts">
-    <param name="android-package" value="org.apache.cordova.ContactManager" />
+    <param name="android-package" value="org.apache.cordova.ContactManager"/>
   </feature>
   <platform name="android">
-
-      <icon src="www/res/icons/android/bola-icon.png" density="ldpi"/>
-      <icon src="www/res/icons/android/bola-icon48.png" density="mdpi"/>
-      <icon src="www/res/icons/android/bola-icon72.png" density="hdpi"/>
-      <icon src="www/res/icons/android/bola-icon96.png" density="xhdpi"/>
+    <icon src="www/res/icons/android/bola-icon.png" density="ldpi"/>
+    <icon src="www/res/icons/android/bola-icon48.png" density="mdpi"/>
+    <icon src="www/res/icons/android/bola-icon72.png" density="hdpi"/>
+    <icon src="www/res/icons/android/bola-icon96.png" density="xhdpi"/>
     <splash src="www/res/splash/android/bola-icon200.png" density="land-ldpi"/>
     <splash src="www/res/splash/android/bola-icon200.png" density="land-mdpi"/>
     <splash src="www/res/splash/android/bola-icon200.png" density="land-hdpi"/>
