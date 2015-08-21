@@ -19,8 +19,7 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
         });
     })
 
-    .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading, $filter,
-                                        $rootScope, $ionicUser, $ionicPush) {
+    .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading, $filter) {
         $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
@@ -43,47 +42,6 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
                 $scope.countries = data;
             });
 
-        $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
-            alert("Successfully registered token " + data.token);
-            console.log('Ionic Push: Got token ', data.token, data.platform);
-            $scope.token = data.token;
-        });
-
-        $scope.identifyUser = function() {
-            alert('Ionic User: Identifying with Ionic User service');
-
-            var user = $ionicUser.get();
-            if(!user.user_id) {
-                // Set your user_id here, or generate a random one.
-                user.user_id = $ionicUser.generateGUID();
-            }
-
-            // Add some metadata to your user object.
-            angular.extend(user, {
-                name: 'Ionitron',
-                bio: 'I come from planet Ion'
-            });
-
-            // Identify your user with the Ionic User Service
-            $ionicUser.identify(user).then(function(){
-                $scope.identified = true;
-                alert('Identified user ' + user.name + '\n ID ' + user.user_id);
-            });
-        };
-
-        $ionicPush.register({
-            canShowAlert: true, //Can pushes show an alert on your screen?
-            canSetBadge: true, //Can pushes update app icon badges?
-            canPlaySound: true, //Can notifications play a sound?
-            canRunActionsOnWake: true, //Can run actions outside the app,
-            onNotification: function(notification) {
-                // Handle new push notifications here
-                alert(notification);
-                return true;
-            }
-        });
-
-
         var serverRequest = function (extraUrl, success, params) {
             $http({
                 url: $scope.serverUrl + extraUrl,
@@ -100,6 +58,7 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
                     });
                 }
             }).error(function (data, status) {
+                console.error(arguments);
                 noInternet();
             });
         };
@@ -134,6 +93,8 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
             $scope.checkVerification('development');
 
         document.addEventListener('deviceready', function () {
+            var device = ionic.Platform.device();
+            console.log(device);
             $scope.checkVerification(device.uuid);
             var options = new ContactFindOptions();
             var fields = ["name", "phoneNumbers", "photos"];

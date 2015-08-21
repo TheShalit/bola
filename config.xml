@@ -9,20 +9,16 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="android-minSdkVersion" value="16"/>
-  <preference name="BackupWebStorage" value="none"/>
-  <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="3000"/>
-  <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
-  <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
-  </feature>
-  <feature name="Contacts">
-    <param name="android-package" value="org.apache.cordova.ContactManager"/>
-  </feature>
+  <allow-navigation href="http://*/*"/>
+  <allow-intent href="http://*/*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-intent href="tel:*"/>
+  <allow-intent href="sms:*"/>
+  <allow-intent href="mailto:*"/>
+  <allow-intent href="geo:*"/>
+  <platform name="android">
+    <allow-intent href="market:*"/>
+  </platform>
   <platform name="android">
     <icon src="www/res/icons/android/bola-icon.png" density="ldpi"/>
     <icon src="www/res/icons/android/bola-icon48.png" density="mdpi"/>
