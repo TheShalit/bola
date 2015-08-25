@@ -4,7 +4,7 @@ console.error = function (err) {
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
+angular.module('bola', ['ionic', 'ionic.service.core', 'ionic.service.push', 'ngCordova', 'firebase', 'contactFilter', 'ngAutocomplete'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -19,7 +19,8 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
         });
     })
 
-    .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading, $filter) {
+    .controller('eventsCtrl', function ($scope, $http, $ionicPopup, $ionicLoading, $filter,
+                                        $rootScope, $ionicUser, $ionicPush) {
         $scope.tab = 'events';
         $scope.serverUrl = 'http://bola-server.herokuapp.com/';
         $scope.user = {};
@@ -36,7 +37,6 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
             invites: []
         };
         $scope.newEvent = angular.copy(newEventProps);
-        $http.defaults.withCredentials = true;
         $http.get('js/phone_prefix.json').
             success(function (data) {
                 $scope.countries = data;
@@ -46,6 +46,7 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
             $http({
                 url: $scope.serverUrl + extraUrl,
                 method: "POST",
+                withCredentials: true,
                 data: params || {}
             }).success(function (data) {
                 $ionicLoading.hide();
@@ -85,6 +86,19 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
             template: 'Checking User...'
         });
 
+        $scope.identifyUser = function () {
+            var user = $ionicUser.get();
+            if (!user.user_id) {
+                user.user_id = $ionicUser.generateGUID();
+            }
+
+            angular.extend(user, $scope.user);
+
+            $ionicUser.identify(user).then(function () {
+                // TODO No need then. auto sent to serve
+            });
+        };
+
         $scope.checkVerification = function (uuid) {
             serverRequest('users/is_verified', checkLogin, {uuid: uuid});
         };
@@ -92,9 +106,24 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
         if (!window.cordova)
             $scope.checkVerification('development');
 
+        $rootScope.$on('$cordovaPush:tokenReceived', function (event, data) {
+            $scope.token = data.token; // TODO here token sent automatically so remove it
+        });
+
+        $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
+            // TODO what to do with notifications inside the app
+        });
+
+        // Registers a device for push notifications and stores its token
+        $scope.pushRegister = function () {
+            console.log('Ionic Push: Registering user');
+
+            // Register with the Ionic Push service.  All parameters are optional.
+            $ionicPush.register();
+        };
+
         document.addEventListener('deviceready', function () {
             var device = ionic.Platform.device();
-            console.log(device);
             $scope.checkVerification(device.uuid);
             var options = new ContactFindOptions();
             var fields = ["name", "phoneNumbers", "photos"];
@@ -103,6 +132,7 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
             options.hasPhoneNumber = true;
             var watchLogin = $scope.$watch('isLogin', function () {
                 if ($scope.isLogin) {
+                    $scope.identifyUser(); // TODO identify only after user has profile
                     if (false)
                         navigator.contacts.find(fields, function (contacts) {
                             serverRequest('users/verified_phones', function (data) {
@@ -375,6 +405,7 @@ angular.module('bola', ['ionic', 'firebase', 'contactFilter', 'ngAutocomplete'])
             $http({
                 url: $scope.serverUrl + 'messages/create',
                 method: "POST",
+                withCredentials: true,
                 data: {event_id: $scope.event.id, content: $scope.message.content}
             }).success(function (data) {
                 if (data.success) {

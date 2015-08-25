@@ -43,6 +43,10 @@
                         {
                             "xml": "<feature name=\"Contacts\"><param name=\"ios-package\" value=\"CDVContacts\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PushPlugin\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -138,6 +142,9 @@
         },
         "cordova-plugin-contacts": {
             "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.ionicframework.bola715407"
         }
     },
     "dependent_plugins": {}

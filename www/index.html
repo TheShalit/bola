@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' bola-server.herokuapp.com ws://localhost:35729 data: gap: https://ssl.gstatic.com;connect-src *;style-src 'self' 'unsafe-inline'; media-src *;img-src csi.gstatic.com 'self' s3.amazonaws.com;script-src maps.googleapis.com maps.gstatic.com 'self' localhost:35729 'unsafe-eval' 'unsafe-inline';">
+    <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; bola-server.herokuapp.com ws://localhost:35729 data: gap: https://ssl.gstatic.com;connect-src *;style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *;img-src maps.googleapis.com csi.gstatic.com &apos;self&apos; s3.amazonaws.com;script-src maps.googleapis.com maps.gstatic.com &apos;self&apos; localhost:35729 &apos;unsafe-eval&apos; &apos;unsafe-inline&apos;;">
     <title>Bola</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -16,13 +16,16 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-service-core/ionic-core.js"></script>
+    <script src="lib/ionic-service-push/ionic-push.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     <!-- AngularFire -->
     <script src="js/firebase.js"></script>
     <script src="js/angularfire.min.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
     <script src="js/ngautocomplete.js"></script>
 
 
@@ -32,8 +35,8 @@
 </head>
 <body ng-app="bola">
 <ion-pane ng-controller="eventsCtrl">
-    <div ng-hide="!isLogin" ng-include="'templates/' + tab + '.html'"></div>
-    <div ng-hide="isLogin" ng-include="'templates/registration.html'"></div>
+    <div ng-hide="!isLogin" ng-include="&apos;templates/&apos; + tab + &apos;.html&apos;"></div>
+    <div ng-hide="isLogin" ng-include="&apos;templates/registration.html&apos;"></div>
 </ion-pane>
 </body>
 </html>
