@@ -1,14 +1,11 @@
 <form class="new-event-form" ng-submit="createEvent()">
     <div class="bar bar-header bar-assertive">
-        <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
+        <back-button></back-button>
         <h1 class="title">New Event</h1>
     </div>
     <ion-content class="has-header">
         <div class="list new-event">
-            <div class="new-image">
-                <input type="hidden" name="avatar" ng-model="newEvent.avatar"/>
-                <img ng-src="{{newEvent.avatar}}" ng-click="chooseImage('newEvent')"/>
-            </div>
+            <avatar-uploader ng-class="'new-image'" avatar="newEvent.avatar"></avatar-uploader>
 
             <label class="item item-input">
                 <span class="input-label">What?</span>
@@ -47,11 +44,13 @@
             </div>
             <label class="item item-input">
                 <span class="input-label">Where?</span>
-                <input type="text" ng-model="newEvent.location" placeholder="Enter Location" ng-autocomplete>
+                <ion-google-place placeholder="Enter Location" ng-model="newEvent.location" />
             </label>
             <label class="item item-input">
                 <span class="input-label">Who?</span>
-                <button type="button" class="button button-assertive contacts-button" ng-click="openContacts()">Select Contacts ({{newEvent.invites.length}})</button>
+                <button type="button" class="button button-assertive contacts-button" ng-click="openContacts()">Select
+                    Contacts ({{newEvent.invites.length}})
+                </button>
             </label>
             <label class="item item-input">
                 <textarea placeholder="Enter Description" ng-model="newEvent.description" rows="6" cols="6"></textarea>

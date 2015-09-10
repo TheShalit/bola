@@ -3,40 +3,48 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; bola-server.herokuapp.com ws://localhost:35729 data: gap: https://ssl.gstatic.com;connect-src *;style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *;img-src maps.googleapis.com csi.gstatic.com &apos;self&apos; s3.amazonaws.com;script-src maps.googleapis.com maps.gstatic.com &apos;self&apos; localhost:35729 &apos;unsafe-eval&apos; &apos;unsafe-inline&apos;;">
+    <meta http-equiv="Content-Security-Policy" content="default-src apps.ionic.io push.ionic.io bola-server.herokuapp.com ws://localhost:35729 localhost:35729 csi.gstatic.com ssl.gstatic.com
+          maps.googleapis.com maps.gstatic.com csi.gstatic.com s3.amazonaws.com
+          wss://s-dal5-nss-18.firebaseio.com s-dal5-nss-18.firebaseio.com boiling-torch-2188.firebaseio.com
+          data: gap: &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos;;">
     <title>Bola</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ion-google-place/ion-google-place.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
+    <link href="css/extra_animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-service-core/ionic-core.js"></script>
     <script src="lib/ionic-service-push/ionic-push.js"></script>
+    <script src="lib/ion-google-place/ion-google-place.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     <!-- AngularFire -->
-    <script src="js/firebase.js"></script>
-    <script src="js/angularfire.min.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
-    <script src="js/ngautocomplete.js"></script>
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/firebase/angularfire.min.js"></script>
 
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/controllers.js"></script>
     <script src="js/filters.js"></script>
+    <script src="js/app.js"></script>
 </head>
 <body ng-app="bola">
 <ion-pane ng-controller="eventsCtrl">
-    <div ng-hide="!isLogin" ng-include="&apos;templates/&apos; + tab + &apos;.html&apos;"></div>
-    <div ng-hide="isLogin" ng-include="&apos;templates/registration.html&apos;"></div>
+    <ion-nav-view animation="slide-left-right">
+    </ion-nav-view>
 </ion-pane>
 </body>
 </html>

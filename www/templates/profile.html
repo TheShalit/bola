@@ -1,22 +1,19 @@
 <form class="profile-form" ng-submit="updateUser()">
     <div class="bar bar-header bar-assertive">
-        <button class="button button-icon ion-android-arrow-back" ng-show="isLogin" ng-click="openTab('events')"></button>
+        <back-button ng-show="user.name"></back-button>
         <h1 class="title">Profile</h1>
     </div>
     <div class="list has-header">
-        <div class="new-image profile-image">
-            <input type="hidden" name="avatar" ng-model="user.avatar"/>
-            <img ng-src="{{user.avatar}}" ng-click="chooseImage('user')"/>
-        </div>
+        <avatar-uploader ng-class="'profile-image'" avatar="userData.avatar"></avatar-uploader>
 
         <label class="item item-input">
-            <input type="text" ng-model="user.name" placeholder="Enter Name">
+            <input type="text" ng-model="userData.name" placeholder="Enter Name">
         </label>
     </div>
 
-    <ion-footer-bar>
-        <button class="button button-full button-assertive send-button">
+    <div class="submit-button">
+        <button type="submit" class="button button-block button-assertive">
             Send
         </button>
-    </ion-footer-bar>
+    </div>
 </form>

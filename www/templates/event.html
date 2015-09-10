@@ -1,55 +1,39 @@
-<div ng-controller="eventCtrl">
-    <div ng-show="eventPop" class="event-details"
-         ng-include="'templates/' + (eventPop || 'event_details') + '.html'"></div>
-    <div ng-click="openEventDetails()" class="bar bar-header bar-assertive chat-bar">
-        <button class="button button-icon ion-android-arrow-back" ng-click="openTab('events')"></button>
-        <div class="h1 title doublerow">
-            <div>{{event.title}}</div>
-            <div>{{event.start_date}} at {{event.location}}</div>
-        </div>
+<div class="bar bar-header bar-assertive chat-bar">
+    <back-button></back-button>
+    <div class="h1 title doublerow" ng-click="openEventDetails()">
+        <div>{{event.title}}</div>
+        <div>{{event.start_date}} at {{event.location}}</div>
     </div>
-    <div class="button-attend" ng-class="eventPop">
-        <button ng-click="!eventPop && openMenu('attending')"
-                ng-class="getStatus()"
-                ng-class="{'opened-menu': settings.menuOpen == 'attending'}"
-                class="button add-button">
-        </button>
-        <div ng-show="settings.menuOpen == 'attending'" class="attend-menu">
-            <button ng-click="changeAttending('accept')" class="button ion-ios-checkmark add-button">
-            </button>
-            <button ng-click="changeAttending('maybe')" class="button ion-ios-help add-button">
-            </button>
-            <button ng-click="changeAttending('declined')" class="button ion-ios-close add-button">
-            </button>
-        </div>
-    </div>
-    <ion-content class="messages-content">
-        <ol class="messages" ng-class="{'first-load': firstLoad}">
-            <li ng-repeat="message in messages" ng-class="message.writer_id == userId ? 'self' : 'other'">
-                <div class="message-bullet">
-                    <div class="writer">
-                        <span class="message-status icon" ng-class="getStatus('{{message.writer_status}}')"></span>
-                            {{message.writer_name}}
-                    </div>
-                    <div><p>{{message.content}}</p></div>
-                </div>
-            </li>
-        </ol>
-    </ion-content>
-
-    <form ng-submit="sendMsg()" novalidate>
-        <ion-footer-bar class="message-footer">
-            <div class="message-input">
-                <label>
-                    <input id="msgInput" type="text" class="message-content" ng-model="message.content"
-                           placeholder="Send a message..."/>
-                </label>
-            </div>
-
-            <div class="submit-message">
-                <button class="button button-icon ion-android-send" type="submit"
-                        ng-disabled="!message.content || message.content === ''">&nbsp;</button>
-            </div>
-        </ion-footer-bar>
-    </form>
 </div>
+<div class="button-attend" ng-class="eventPop">
+    <top-menu disable-open="eventPop" ng-class="getStatus(event.status)" menu-class="attend-menu">
+        <button ng-click="changeAttending('accept')" class="button ion-ios-checkmark add-button">
+        </button>
+        <button ng-click="changeAttending('maybe')" class="button ion-ios-help add-button">
+        </button>
+        <button ng-click="changeAttending('declined')" class="button ion-ios-close add-button">
+        </button>
+    </top-menu>
+</div>
+
+<div ng-show="eventPop" class="event-details"
+     ng-include="'templates/' + (eventPop || 'event_details') + '.html'"></div>
+<ion-content class="messages-content">
+    <ol class="messages" ng-class="{'first-load': firstLoad}">
+        <li ng-repeat="message in messages" ng-class="message.writer_id == userId ? 'self' : 'other'">
+            <div class="message-bullet">
+                <div class="writer">
+                    <span class="message-status icon" ng-class="getStatus('{{message.writer_status}}')"></span>
+                    {{message.writer_name}}
+                </div>
+                <div><p>{{message.content}}</p></div>
+            </div>
+        </li>
+    </ol>
+</ion-content>
+
+<form ng-submit="sendMsg()" novalidate>
+    <ion-footer-bar class="message-footer">
+        <message-content ng-model="newMessage.content"></message-content>
+    </ion-footer-bar>
+</form>

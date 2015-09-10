@@ -1,0 +1,85 @@
+@-webkit-keyframes openDown {
+    0% {
+        -webkit-transform: scale(1,0);
+        transform: scale(1,0);
+        transform-origin: top;
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: scale(1,1);
+        transform: scale(1,1);
+        transform-origin: top;
+    }
+}
+
+@keyframes openDown {
+    0% {
+        -webkit-transform: scale(1,0);
+        -ms-transform: scale(1,0);
+        transform: scale(1,0);
+        transform-origin: top;
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: scale(1,1);
+        -ms-transform: scale(1,1);
+        transform: scale(1,1);
+        transform-origin: top;
+    }
+}
+
+.openDown {
+    -webkit-animation-name: openDown;
+    animation-name: openDown;
+}
+
+@-webkit-keyframes closeUp {
+    0% {
+        -webkit-transform: scale(1,1);
+        transform: scale(1,1);
+        transform-origin: top;
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: scale(1,0);
+        transform: scale(1,0);
+        transform-origin: top;
+    }
+}
+
+@keyframes closeUp {
+    0% {
+        -webkit-transform: scale(1,1);
+        -ms-transform: scale(1,1);
+        transform: scale(1,1);
+        transform-origin: top;
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: scale(1,0);
+        -ms-transform: scale(1,0);
+        transform: scale(1,0);
+        transform-origin: top;
+    }
+}
+
+.closeUp {
+    -webkit-animation-name: closeUp;
+    animation-name: closeUp;
+}
+
+@keyframes moveAttend {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    30% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 140px, 0);
+    }
+}

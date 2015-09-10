@@ -1,13 +1,50 @@
 <div class="bar bar-header bar-assertive">
-    <button ng-click="openMenu('pages') " class="button button-icon ion-android-menu"></button>
+    <top-menu btn-icon="ion-android-menu" direction="left">
+        <a class="item item-icon-left" ui-sref="profile">
+            <i class="icon ion-android-person"></i>
+            Profile
+        </a>
+        <a class="item item-icon-left" href="#" ng-click="pushRegister()">
+            <i class="icon ion-key"></i>
+            Account
+        </a>
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-gear-a"></i>
+            Settings
+        </a>
+        <a class="item item-icon-left" ui-sref="help">
+            <i class="icon ion-help-circled"></i>
+            Help
+        </a>
+    </top-menu>
     <div class="h1 title">
         <div>Bola</div>
     </div>
-    <button ng-click="openMenu('order')" class="button button-icon ion-android-funnel"></button>
+    <top-menu btn-icon="ion-android-funnel" direction="right">
+        <div class="item item-divider">
+            Order by
+        </div>
+        <label class="item item-radio">
+            <input type="radio" ng-model="settings.order" value="start_date">
+
+            <div class="item-content">
+                Date & Time
+            </div>
+            <span class="radio-icon ion-checkmark"></span>
+        </label>
+        <label class="item item-radio">
+            <input type="radio" ng-model="settings.order" value="title">
+
+            <div class="item-content">
+                Title
+            </div>
+            <span class="radio-icon ion-checkmark"></span>
+        </label>
+    </top-menu>
 </div>
 <ion-content class="has-header">
     <div ng-repeat="event in events | orderBy: settings.order">
-        <a class="item item-thumbnail-left" href="#" ng-click="openEvent(event)">
+        <a class="item item-thumbnail-left" ui-sref="event({eventId: event.id})">
             <img ng-src="{{event.img_square}}">
 
             <h2>{{event.title}}</h2>
@@ -18,44 +55,5 @@
     </div>
 </ion-content>
 <div class="button-footer">
-    <button ng-click="openTab('new_event')" class="button button-assertive ion-plus add-button"></button>
-</div>
-<div ng-show="settings.menuOpen == 'pages'" class="list events-menu pages-menu">
-    <a class="item item-icon-left" href="#" ng-click="openTab('profile')">
-        <i class="icon ion-android-person"></i>
-        Profile
-    </a>
-    <a class="item item-icon-left" href="#" ng-click="pushRegister()">
-        <i class="icon ion-key"></i>
-        Account
-    </a>
-    <a class="item item-icon-left" href="#">
-        <i class="icon ion-gear-a"></i>
-        Settings
-    </a>
-    <a class="item item-icon-left" href="#" ng-click="openTab('help')">
-        <i class="icon ion-help-circled"></i>
-        Help
-    </a>
-</div>
-<div ng-show="settings.menuOpen == 'order'" class="list events-menu events-sorting">
-    <div class="item item-divider">
-        Order by
-    </div>
-    <label class="item item-radio">
-        <input type="radio" ng-model="settings.order" value="start_date">
-
-        <div class="item-content">
-            Date & Time
-        </div>
-        <span class="radio-icon ion-checkmark"></span>
-    </label>
-    <label class="item item-radio">
-        <input type="radio" ng-model="settings.order" value="title">
-
-        <div class="item-content">
-            Title
-        </div>
-        <span class="radio-icon ion-checkmark"></span>
-    </label>
+    <button ui-sref="new_event" class="button button-assertive ion-plus add-button"></button>
 </div>
