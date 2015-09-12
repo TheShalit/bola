@@ -28,7 +28,7 @@ angular.module('ion-google-place', [])
                                     'Cancel',
                                 '</button>',
                             '</div>',
-                            '<ion-content class="has-header has-header">',
+                            '<ion-content class="has-header">',
                                 '<ion-list>',
                                     '<ion-item ng-repeat="location in locations" type="item-text-wrap" ng-click="selectLocation(location)">',
                                         '{{location.formatted_address}}',

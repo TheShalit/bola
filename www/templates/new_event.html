@@ -15,28 +15,14 @@
             <span class="item item-input">
                 <span class="input-label">When?</span>
 
-                <div class="row">
-                    <div class="col">
-                        <input type="date" ng-model="newEvent.start_date">
-                    </div>
-                    <div class="col">
-                        <input type="time" ng-model="newEvent.start_time" step="600">
-                    </div>
-                </div>
+                <pick-date-time ng-model="newEvent.start_date"></pick-date-time>
             </span>
 
             <div class="item item-input" class="end-date-field">
                 <a ng-show="!addEndDate" ng-click="addEndDate=true" class="until">Until?</a>
                 <span class="input-label" ng-show="addEndDate">Until?</span>
 
-                <div class="row" ng-show="addEndDate">
-                    <div class="col">
-                        <input type="date" ng-model="newEvent.end_date">
-                    </div>
-                    <div class="col">
-                        <input type="time" ng-model="newEvent.end_time" step="600">
-                    </div>
-                </div>
+                <pick-date-time ng-model="newEvent.end_date" ng-show="addEndDate"></pick-date-time>
 
                 <div class="cancel-env-date" ng-show="addEndDate" ng-click="addEndDate=false">
                     <i class="icon ion-close-circled"></i>
@@ -44,13 +30,16 @@
             </div>
             <label class="item item-input">
                 <span class="input-label">Where?</span>
-                <ion-google-place placeholder="Enter Location" ng-model="newEvent.location" />
+                <ion-google-place placeholder="Enter Location" ng-model="newEvent.location"/>
             </label>
             <label class="item item-input">
                 <span class="input-label">Who?</span>
-                <button type="button" class="button button-assertive contacts-button" ng-click="openContacts()">Select
-                    Contacts ({{newEvent.invites.length}})
-                </button>
+
+                <div class="row">
+                    <div class="col" ng-click="openContacts()">
+                        <i class="ion-person-add"> {{newEvent.invites.length}} contacts</i>
+                    </div>
+                </div>
             </label>
             <label class="item item-input">
                 <textarea placeholder="Enter Description" ng-model="newEvent.description" rows="6" cols="6"></textarea>

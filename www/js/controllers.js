@@ -49,20 +49,17 @@ angular.module('bolaControllers',
     })
 
     .controller('eventsCtrl', function ($scope, $state, $ionicHistory, $ionicPopup, $ionicLoading, $filter,
-                                        serverRequest, $rootScope, $ionicUser,
+                                        serverRequest, $rootScope, $ionicUser, $cordovaDatePicker,
                                         updateWithAvatar, phonePrefix, eventsFactory) {
         $scope.userData = {};
         $scope.contacts = [];
         $scope.events = JSON.parse(window.localStorage.events || '[]');
         $scope.contactsLoaded = false;
         $scope.settings = {order: 'start_date'};
-        var time = new Date('2000-01-01T' + $filter('date')(new Date(), 'HH:mm').slice(0, 4) + '0');
         var newEventProps = {
-            avatar: 'img/default-event.png', // TODO change to avatar uploader
+            avatar: 'img/default-event.png',
             start_date: new Date(),
-            start_time: time,
             end_date: new Date(),
-            end_time: time,
             invites: []
         };
         $scope.newEvent = angular.copy(newEventProps);
@@ -127,7 +124,7 @@ angular.module('bolaControllers',
                     title: 'New Event',
                     template: '<div style="text-align:center">' + newEvent['title'] + ' has been created!</div>'
                 });
-            }, $scope.newEvent);
+            }, angular.extend($scope.newEvent, {location: $scope.newEvent.location.formatted_address}));
         };
 
         $scope.closeNewEvent = function () {

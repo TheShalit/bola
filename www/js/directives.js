@@ -144,4 +144,39 @@ angular.module('bolaDirectives', ['ionic', 'bolaServices'])
             'ng-disabled="!content">&nbsp;</button>' +
             '</div>'
         }
+    })
+
+    .directive('pickDateTime', function ($cordovaDatePicker) {
+        return {
+            restrict: 'E',
+            scope: {
+                ngModel: '=',
+                ngShow: '='
+            },
+            link: function (scope) {
+
+                scope.openWhen = function (type) {
+                    var options = {
+                        date: new Date(),
+                        mode: type,
+                        minDate: new Date(),
+                        allowOldDates: false,
+                        allowFutureDates: true
+                    };
+
+                    $cordovaDatePicker.show(options).then(function (date) {
+                        scope[type + 'Model'] = date;
+                    });
+                };
+            },
+            replace: true,
+            template: '<div class="row">\
+            <div class="col" ng-click="openWhen(\'date\')">\
+            <i class="ion-calendar"> {{ngModel | date:"dd/MM/yyyy"}}</i>\
+            </div>\
+            <div class="col" ng-click="openWhen(\'time\')">\
+            <i class="ion-clock"> {{ngModel | date:"HH:mm"}}</i>\
+            </div>\
+            </div>'
+        }
     });
