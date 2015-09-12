@@ -150,7 +150,7 @@ angular.module('bolaDirectives', ['ionic', 'bolaServices'])
         return {
             restrict: 'E',
             scope: {
-                ngModel: '=',
+                dateModel: '=ngModel',
                 ngShow: '='
             },
             link: function (scope) {
@@ -165,17 +165,20 @@ angular.module('bolaDirectives', ['ionic', 'bolaServices'])
                     };
 
                     $cordovaDatePicker.show(options).then(function (date) {
-                        scope[type + 'Model'] = date;
+                        if (type == 'date')
+                            scope.dateModel.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+                        else
+                            scope.dateModel.setHours(date.getHours(), date.getMinutes());
                     });
                 };
             },
             replace: true,
             template: '<div class="row">\
             <div class="col" ng-click="openWhen(\'date\')">\
-            <i class="ion-calendar"> {{ngModel | date:"dd/MM/yyyy"}}</i>\
+            <i class="ion-calendar"> {{dateModel | date:"dd/MM/yyyy"}}</i>\
             </div>\
             <div class="col" ng-click="openWhen(\'time\')">\
-            <i class="ion-clock"> {{ngModel | date:"HH:mm"}}</i>\
+            <i class="ion-clock"> {{dateModel | date:"HH:mm"}}</i>\
             </div>\
             </div>'
         }

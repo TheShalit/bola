@@ -43,6 +43,10 @@
                         {
                             "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DatePickerPlugin\"><param name=\"android-package\" value=\"com.plugin.datepicker.DatePickerPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -144,6 +148,9 @@
             "PACKAGE_NAME": "com.ionicframework.bola715407"
         },
         "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.ionicframework.bola715407"
+        },
+        "cordova-plugin-datepicker": {
             "PACKAGE_NAME": "com.ionicframework.bola715407"
         }
     },
