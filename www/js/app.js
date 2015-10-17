@@ -55,16 +55,19 @@ angular.module('bola', ['ionic', 'bolaControllers', 'bolaDirectives', 'pusher-an
             $rootScope.channel = pusher.subscribe('messages');
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
-            if (window.cordova && window.cordova.plugins.Keyboard) {
+            if (window.cordova && window.cordova.plugins.Keyboard)
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            }
-            if (window.StatusBar) {
+
+            if (window.StatusBar)
                 StatusBar.styleDefault();
-            }
+
         });
 
         // Listen to '$locationChangeSuccess', not '$stateChangeStart'
         $rootScope.$on('$locationChangeSuccess', function () {
+            if (window.cordova && window.cordova.plugins.Keyboard)
+                cordova.plugins.Keyboard.close();
+            
             if (!$rootScope.user.name) {
                 window.localStorage.clear();
                 $state.go('registration');

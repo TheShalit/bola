@@ -48,11 +48,13 @@
             <img ng-src="{{event.img_square}}">
 
             <h2>{{event.title}}</h2>
-            <span class="date-time-tab"> {{event.start_date}} </span>
+            <span class="date-time-tab"> {{event.start_date_in_words}} from now </span>
 
             <p><span>{{event.description}}</span></p>
 
-            <i class="icon" ng-class="getStatus(event.status)"></i>
+            <i class="icon" ng-class="getStatus(event.status)" ng-if="!event.unread"></i>
+
+            <span class="badge badge-positive event-badge-avatar" ng-if="event.unread">{{event.unread}}</span>
         </a>
     </div>
 </ion-content>

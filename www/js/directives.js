@@ -129,13 +129,14 @@ angular.module('bolaDirectives', ['ionic', 'bolaServices'])
                 content: '=ngModel'
             },
             link: function (scope, element) {
-                element.find('input')[0].onBlur = function () {
-                    this.focus();
+                var input = element.find('input')[0];
+                scope.refocus = function () {
+                    input.focus();
                 };
             },
             template: '<div class="message-input">' +
             '<label>' +
-            '<input id="msgInput" type="text" class="message-content" ng-model="content"' +
+            '<input id="msgInput" type="text" ng-blur="refocus()" class="message-content" ng-model="content"' +
             'placeholder="Send a message..."/>' +
             '</label>' +
             '</div>' +

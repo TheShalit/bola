@@ -2,7 +2,7 @@
     <back-button></back-button>
     <div class="h1 title doublerow" ng-click="openEventDetails()">
         <div>{{event.title}}</div>
-        <div>{{event.start_date}} at {{event.location}}</div>
+        <div>in {{event.start_date_in_words}} at {{event.location}}</div>
     </div>
 </div>
 <div class="button-attend" ng-class="eventPop">

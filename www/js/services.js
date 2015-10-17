@@ -147,30 +147,37 @@ angular.module('bolaServices', [])
         };
     })
 
-    .factory('messagesFactory', function (serverRequest, $rootScope) {
+    .factory('messagesFactory', function (serverRequest, $rootScope, eventsFactory) {
         return {
             messages: JSON.parse(window.localStorage.messages || '{}'),
             getMessages: function (eventId) {
                 var me = this;
+                me.messages[eventId] = me.messages[eventId] || {};
                 serverRequest('messages/from',
                     function (data) {
                         if (data['messages'].length > 0)
                             me.updateMessages(eventId, data['messages']);
                     },
                     {
-                        event_id: eventId,
-                        updated_at: me.messages[eventId] && me.messages[eventId]['updatedAt']
+                        id: me.messages[eventId]['lastId'],
+                        event_id: eventId
                     }
                 );
-                return me.messages[eventId] ? me.messages[eventId]['messages'] : [];
+                return me.messages[eventId]['messages'] || [];
             },
             updateMessages: function (eventId, extraMessages) {
                 console.log(extraMessages);
                 this.messages[eventId] = this.messages[eventId] || {};
                 this.messages[eventId]['messages'] = (this.messages[eventId]['messages'] || []).concat(extraMessages);
-                this.messages[eventId]['updatedAt'] = extraMessages[extraMessages.length - 1]['updated_at'];
+                this.messages[eventId]['lastId'] = extraMessages[extraMessages.length - 1]['id'];
 
                 $rootScope.$emit('newMessages', extraMessages);
+                serverRequest('events/read_all',
+                    function () {
+                        eventsFactory.byIdCache(eventId)['unread'] = 0;
+                    },
+                    {id: eventId}
+                );
                 window.localStorage.messages = JSON.stringify(this.messages);
             }
         };

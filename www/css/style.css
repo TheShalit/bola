@@ -540,3 +540,8 @@ li.self .message-bullet:before {
     border-color: darkred;
     background-color: rgb(255, 63, 65);
 }
+
+.event-badge-avatar {
+    top: 39px !important;
+    right: 20px !important;
+}

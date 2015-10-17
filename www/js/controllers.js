@@ -201,6 +201,9 @@ angular.module('bolaControllers',
         window.addEventListener('native.keyboardshow', function () {
             $ionicScrollDelegate.scrollBottom(true);
         });
+        window.addEventListener('native.keyboardhide', function () {
+            $ionicScrollDelegate.scrollBottom(true);
+        });
 
         $scope.sendMsg = function () {
             serverRequest('messages/create', function () {
