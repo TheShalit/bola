@@ -1,5 +1,5 @@
 angular.module('bolaControllers',
-    ['ionic', 'bolaServices', 'ionic.service.core', 'ionic.service.push', 'ngCordova', 'firebase',
+    ['ionic', 'bolaServices', 'ionic.service.core', 'ionic.service.push', 'ngCordova', 'pusher-angular',
         'contactFilter', 'ion-google-place'])
 
     .controller('registrationCtrl', function ($scope, serverRequest, $ionicPopup, $ionicLoading, $ionicHistory,
@@ -165,20 +165,30 @@ angular.module('bolaControllers',
         $scope.getStatus = statuses;
     })
 
-    .controller('eventCtrl', function ($scope, $ionicScrollDelegate, $firebaseArray, $ionicPopup, $rootScope,
-                                       $timeout, $ionicLoading, serverRequest, eventsFactory, $stateParams, statuses) {
-        $scope.firstLoad = true;
+    .controller('eventCtrl', function ($scope, $ionicScrollDelegate, $ionicPopup, $rootScope, $timeout, $ionicLoading,
+                                       serverRequest, eventsFactory, messagesFactory, $stateParams, statuses) {
         $scope.eventPop = '';
-        $scope.messages = [];
+        $scope.messages = messagesFactory.getMessages($stateParams.eventId);
         $scope.userId = $rootScope.user.id;
         $scope.event = eventsFactory.byIdCache($stateParams.eventId);
-        $scope.newMessage = {};
+        $scope.newMessage = {
+            content: '',
+            writer_id: $rootScope.user.id,
+            writer_name: $rootScope.user.name,
+            writer_status: $scope.event.status
+        };
 
-        var itemsRef = new Firebase("https://boiling-torch-2188.firebaseio.com/events/" + $stateParams.eventId + '/');
-        $scope.messages = $firebaseArray(itemsRef);
+        $timeout(function () {
+            $ionicScrollDelegate.scrollBottom();
+        });
 
-        itemsRef.on('child_added', function () {
+        $rootScope.$on('newMessages', function (event, newMessages) {
+            $scope.messages = $scope.messages.concat(newMessages);
             $ionicScrollDelegate.scrollBottom(true);
+        });
+
+        $rootScope.channel.bind('event' + $stateParams.eventId, function (message) {
+            messagesFactory.updateMessages($stateParams.eventId, [message]);
         });
 
         $scope.getStatus = statuses;
@@ -194,8 +204,8 @@ angular.module('bolaControllers',
 
         $scope.sendMsg = function () {
             serverRequest('messages/create', function () {
-                $scope.newMessage.content = '';
             }, {event_id: $scope.event.id, content: $scope.newMessage.content});
+            $scope.newMessage.content = '';
         };
 
         $scope.closePop = function () {
@@ -227,14 +237,6 @@ angular.module('bolaControllers',
             }).join();
             $scope.openEventDetails();
         };
-
-        $scope.$watch('$viewContentLoaded', function () {
-            $ionicScrollDelegate.scrollBottom();
-
-            $timeout(function () {
-                $scope.firstLoad = false;
-            }, 3000);
-        });
 
         $scope.changeAttending = function (type) {
             $ionicLoading.show({

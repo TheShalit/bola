@@ -112,7 +112,7 @@ angular.module('bolaServices', [])
         }
     })
 
-    .factory('eventsFactory', function ($q, $stateParams, serverRequest) {
+    .factory('eventsFactory', function ($q, serverRequest) {
         var events = {};
 
         return {
@@ -143,6 +143,35 @@ angular.module('bolaServices', [])
             },
             byId: function (id) {
                 return this.refreshEvents(id);
+            }
+        };
+    })
+
+    .factory('messagesFactory', function (serverRequest, $rootScope) {
+        return {
+            messages: JSON.parse(window.localStorage.messages || '{}'),
+            getMessages: function (eventId) {
+                var me = this;
+                serverRequest('messages/from',
+                    function (data) {
+                        if (data['messages'].length > 0)
+                            me.updateMessages(eventId, data['messages']);
+                    },
+                    {
+                        event_id: eventId,
+                        updated_at: me.messages[eventId] && me.messages[eventId]['updatedAt']
+                    }
+                );
+                return me.messages[eventId] ? me.messages[eventId]['messages'] : [];
+            },
+            updateMessages: function (eventId, extraMessages) {
+                console.log(extraMessages);
+                this.messages[eventId] = this.messages[eventId] || {};
+                this.messages[eventId]['messages'] = (this.messages[eventId]['messages'] || []).concat(extraMessages);
+                this.messages[eventId]['updatedAt'] = extraMessages[extraMessages.length - 1]['updated_at'];
+
+                $rootScope.$emit('newMessages', extraMessages);
+                window.localStorage.messages = JSON.stringify(this.messages);
             }
         };
     });

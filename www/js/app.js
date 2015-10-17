@@ -2,9 +2,10 @@ console.error = function (err) {
     alert(JSON.stringify(err));
 };
 
-angular.module('bola', ['ionic', 'bolaControllers', 'bolaDirectives'])
+angular.module('bola', ['ionic', 'bolaControllers', 'bolaDirectives', 'pusher-angular'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
+        window.client = new Pusher('15e74208fb634414cc6d');
 
         $urlRouterProvider.otherwise('/');
 
@@ -46,10 +47,12 @@ angular.module('bola', ['ionic', 'bolaControllers', 'bolaDirectives'])
             });
     })
 
-    .run(function ($rootScope, $ionicUser, $ionicPlatform, $state) {
+    .run(function ($rootScope, $ionicUser, $ionicPlatform, $state, $pusher) {
         $rootScope.user = $ionicUser.get();
 
         $ionicPlatform.ready(function () {
+            var pusher = $pusher(window.client);
+            $rootScope.channel = pusher.subscribe('messages');
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {

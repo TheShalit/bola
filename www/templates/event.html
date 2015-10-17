@@ -20,7 +20,7 @@
      ng-include="'templates/' + (eventPop || 'event_details') + '.html'"></div>
 <ion-content class="messages-content">
     <ol class="messages" ng-class="{'first-load': firstLoad}">
-        <li ng-repeat="message in messages" ng-class="message.writer_id == userId ? 'self' : 'other'">
+        <li ng-repeat="message in messages track by message.id" ng-class="message.writer_id == userId ? 'self' : 'other'">
             <div class="message-bullet">
                 <div class="writer">
                     <span class="message-status icon" ng-class="getStatus('{{message.writer_status}}')"></span>
