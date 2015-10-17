@@ -44,13 +44,15 @@
 </div>
 <ion-content class="has-header">
     <div ng-repeat="event in events | orderBy: settings.order">
-        <a class="item item-thumbnail-left" ui-sref="event({eventId: event.id})">
+        <a class="item item-thumbnail-left item-icon-right" ui-sref="event({eventId: event.id})">
             <img ng-src="{{event.img_square}}">
 
             <h2>{{event.title}}</h2>
             <span class="date-time-tab"> {{event.start_date}} </span>
 
             <p><span>{{event.description}}</span></p>
+
+            <i class="icon" ng-class="getStatus(event.status)"></i>
         </a>
     </div>
 </ion-content>

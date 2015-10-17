@@ -49,7 +49,7 @@ angular.module('bolaControllers',
     })
 
     .controller('eventsCtrl', function ($scope, $state, $ionicHistory, $ionicPopup, $ionicLoading, $filter,
-                                        serverRequest, $rootScope, $ionicUser, $cordovaDatePicker,
+                                        serverRequest, $rootScope, $ionicUser, $cordovaDatePicker, statuses,
                                         updateWithAvatar, phonePrefix, eventsFactory) {
         $scope.userData = {};
         $scope.contacts = [];
@@ -162,21 +162,11 @@ angular.module('bolaControllers',
             $ionicHistory.goBack();
         };
 
-        $scope.changeAttending = function (type) {
-            $ionicLoading.show({
-                template: 'Updating...'
-            });
-            serverRequest('events/update_status',
-                function () {
-                    $scope.event.status = type;
-                },
-                {id: $scope.event.id, status: type}
-            );
-        };
+        $scope.getStatus = statuses;
     })
 
     .controller('eventCtrl', function ($scope, $ionicScrollDelegate, $firebaseArray, $ionicPopup, $rootScope,
-                                       $timeout, serverRequest, eventsFactory, $stateParams, statuses) {
+                                       $timeout, $ionicLoading, serverRequest, eventsFactory, $stateParams, statuses) {
         $scope.firstLoad = true;
         $scope.eventPop = '';
         $scope.messages = [];
@@ -245,6 +235,18 @@ angular.module('bolaControllers',
                 $scope.firstLoad = false;
             }, 3000);
         });
+
+        $scope.changeAttending = function (type) {
+            $ionicLoading.show({
+                template: 'Updating...'
+            });
+            serverRequest('events/update_status',
+                function () {
+                    $scope.event.status = type;
+                },
+                {id: $scope.event.id, status: type}
+            );
+        };
 
         $scope.openWaze = function (location) {
             window.open("waze://?q=" + location);

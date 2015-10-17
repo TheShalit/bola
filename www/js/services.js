@@ -16,8 +16,10 @@ angular.module('bolaServices', [])
         return $http.get('data/phone_prefix.json');
     })
 
-    .factory('serverRequest', function (API_URL, $http, $ionicLoading, $ionicPopup, noInternet) {
+    .factory('serverRequest', function (API_URL, $http, $rootScope, $ionicLoading, $ionicPopup, noInternet) {
         return function (extraUrl, success, params) {
+            params = params || {}
+            params['user_id'] = $rootScope.user.id;
             $http({
                 url: API_URL + extraUrl,
                 method: "POST",
@@ -31,7 +33,7 @@ angular.module('bolaServices', [])
                     console.log(data);
                     $ionicPopup.alert({
                         title: 'Error',
-                        template: '<div style="text-align:center">' + data.errs + '</div>'
+                        template: '<div style="text-align:center">' + (data.errs || data.msg) + '</div>'
                     });
                 }
             }).error(function (data, status) {
@@ -97,7 +99,7 @@ angular.module('bolaServices', [])
 
     .constant('ATTENDING_STATUSES', {
         'null': 'ion-ios-circle-filled',
-        accept: 'ion-ios-checkmark',
+        accept: 'ion-ios-checkmark ',
         maybe: 'ion-ios-help',
         declined: 'ion-ios-close'
     })
